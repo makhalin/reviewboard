@@ -5,6 +5,7 @@ import logging
 from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from django.db.models import Q
 from django.utils import six
+from django.contrib.auth.models import User
 from djblets.util.decorators import augment_method_from
 from djblets.webapi.decorators import (webapi_login_required,
                                        webapi_response_errors,
@@ -12,6 +13,7 @@ from djblets.webapi.decorators import (webapi_login_required,
 from djblets.webapi.errors import (DOES_NOT_EXIST, INVALID_FORM_DATA,
                                    NOT_LOGGED_IN, PERMISSION_DENIED)
 
+from reviewboard.reviews.models import Group
 from reviewboard.scmtools.errors import (AuthenticationError,
                                          SCMError,
                                          RepositoryNotFoundError,
@@ -97,6 +99,28 @@ class RepositoryResource(WebAPIResource):
     ]
 
     allowed_methods = ('GET', 'POST', 'PUT', 'DELETE')
+
+    def grant_priveleges(self, repository, gtype, entity, name):
+        if entity == 'user':
+            try:
+                user = User.objects.get(username=name)
+            except User.DoesNotExist:
+                raise
+            if gtype == 'add':
+                print('user added')
+                repository.users.add(user)
+            elif gtype == 'remove':
+                repository.users.remove(user)
+        elif entity == 'group':
+            try:
+                group = Group.objects.get(name=name)
+            except Group.DoesNotExist:
+                raise
+            if gtype == 'add':
+                print('group added')
+                repository.review_groups.add(group)
+            elif gtype == 'remove':
+                repository.review_groups.r
 
     @webapi_check_login_required
     def get_queryset(self, request, is_list=False, local_site_name=None,
@@ -485,6 +509,19 @@ class RepositoryResource(WebAPIResource):
                 'description': 'Whether the repository is visible.',
                 'added_in': '2.0',
             },
+            'grant_type': {
+                'type': str,
+                'description': '',
+            },
+            'grant_entity': {
+                'type': str,
+                'description': '',
+            },            
+            'grant_name': {
+                'type': str,
+                'description': '',
+            },
+
         },
     )
     def update(self, request, trust_host=False, *args, **kwargs):
@@ -514,6 +551,12 @@ class RepositoryResource(WebAPIResource):
 
             if value is not None:
                 setattr(repository, field, value)
+
+        if 'grant_type' in kwargs and 'grant_entity' in kwargs and 'grant_name' in kwargs:
+            self.grant_priveleges(repository,
+                             kwargs['grant_type'], 
+                             kwargs['grant_entity'],
+                             kwargs['grant_name'])
 
         # Only check the repository if the access information has changed.
         if 'path' in kwargs or 'username' in kwargs or 'password' in kwargs:
