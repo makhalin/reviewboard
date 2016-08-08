@@ -38,7 +38,7 @@ class AnytaskSyncExtension(Extension):
     def on_published_review(self, *args, **kwargs):
         review = kwargs['review']
         review_id = review.review_request.get_display_id()
-        values = {comment.comment_type: (comment.text).encode('utf-8') for comment in review.get_all_comments()
+        values = {comment.comment_type: (comment.text).encode('utf-8') for comment in review.get_all_comments()}
         values['body_top'] = review.body_top.encode('utf-8')
         values['body_bottom'] = review.body_bottom.encode('utf-8')
         values['author'] = review.user.username
