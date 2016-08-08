@@ -107,7 +107,6 @@ class RepositoryResource(WebAPIResource):
             except User.DoesNotExist:
                 raise
             if gtype == 'add':
-                print('user added')
                 repository.users.add(user)
             elif gtype == 'remove':
                 repository.users.remove(user)
@@ -117,7 +116,6 @@ class RepositoryResource(WebAPIResource):
             except Group.DoesNotExist:
                 raise
             if gtype == 'add':
-                print('group added')
                 repository.review_groups.add(group)
             elif gtype == 'remove':
                 repository.review_groups.r
