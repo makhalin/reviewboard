@@ -8,11 +8,11 @@ set -e
 case "$1" in
     configure)
             adduser --system --disabled-login anytask
-            chmod a+x /usr/share/python/rb-for-anytask/lib/python2.7/site-packages/ReviewBoard-2.5b2.dev0-py2.7.egg/reviewboard/manage.py
-            mkdir -p /usr/share/python/rb-for-anytask/lib/python2.7/site-packages/ReviewBoard-2.5b2.dev0-py2.7.egg/htdocs/media/ext
-            mkdir -p /usr/share/python/rb-for-anytask/lib/python2.7/site-packages/ReviewBoard-2.5b2.dev0-py2.7.egg/htdocs/media/uploaded/images
-            mkdir -p /usr/share/python/rb-for-anytask/lib/python2.7/site-packages/ReviewBoard-2.5b2.dev0-py2.7.egg/data
-            cd /usr/share/python/rb-for-anytask/lib/python2.7/site-packages/ReviewBoard-2.5b2.dev0-py2.7.egg/reviewboard/anytask_sync_extension && /usr/share/python/rb-for-anytask/bin/python setup.py develop
+            chmod a+x /usr/share/python/rb-for-anytask/lib/python2.7/site-packages/ReviewBoard-2.5.6.1.dev0-py2.7.egg/reviewboard/manage.py
+            mkdir -p /usr/share/python/rb-for-anytask/lib/python2.7/site-packages/ReviewBoard-2.5.6.1.dev0-py2.7.egg/htdocs/media/ext
+            mkdir -p /usr/share/python/rb-for-anytask/lib/python2.7/site-packages/ReviewBoard-2.5.6.1.dev0-py2.7.egg/htdocs/media/uploaded/images
+            mkdir -p /usr/share/python/rb-for-anytask/lib/python2.7/site-packages/ReviewBoard-2.5.6.1.dev0-py2.7.egg/data
+            cd /usr/share/python/rb-for-anytask/lib/python2.7/site-packages/ReviewBoard-2.5.6.1.dev0-py2.7.egg/reviewboard/anytask_sync_extension && /usr/share/python/rb-for-anytask/bin/python setup.py develop
             chown -R anytask:nogroup /usr/share/python/anytask
             chown -R anytask:nogroup /var/lib/anytask/
     ;;
