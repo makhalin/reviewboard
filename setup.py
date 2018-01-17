@@ -79,7 +79,7 @@ class BuildEggInfo(egg_info):
         if ('sdist' in sys.argv or
             'bdist_egg' in sys.argv or
             'install' in sys.argv):
-            self.run_command('build_media')
+            # self.run_command('build_media')
             self.run_command('build_i18n')
 
         egg_info.run(self)
