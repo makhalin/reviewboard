@@ -2,7 +2,7 @@
 
 from __future__ import unicode_literals
 
-#import urllib, urllib2
+import urlparse
 import requests
 
 from django.conf import settings
@@ -29,7 +29,7 @@ class AnytaskSyncExtension(Extension):
         values['body_top'] = reply.body_top.encode('utf-8')
         values['body_bottom'] = reply.body_bottom.encode('utf-8')
         values['author'] = reply.user.username
-        url = 'http://127.0.0.1:8000/anyrb/update/' + str(review_id)
+        url = urlparse.urljoin(settings.ANYTASK_HOST, '/anyrb/update/') + str(review_id)
         req = requests.post(url, data=values)
         #data = urllib.urlencode(values)
         #req = urllib2.Request(url, data)
@@ -45,7 +45,7 @@ class AnytaskSyncExtension(Extension):
         for comment in review.get_all_comments():
             if comment.comment_type == 'diff':
                 values['diff-url'] = comment.get_absolute_url()
-        url = 'http://127.0.0.1:8000/anyrb/update/' + str(review_id)
+        url = urlparse.urljoin(settings.ANYTASK_HOST, '/anyrb/update/') + str(review_id)
         req = requests.post(url, data=values)
         #data = urllib.urlencode(values)
         #req = urllib2.Request(url, data)

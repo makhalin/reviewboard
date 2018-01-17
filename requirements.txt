@@ -15,3 +15,5 @@ pytz
 recaptcha-client
 Whoosh>=2.6
 virtual-less
+psycopg2
+requests==2.10.0
