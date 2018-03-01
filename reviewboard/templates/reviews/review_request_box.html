@@ -34,31 +34,6 @@
 </div>
 <div id="review-request-warning"></div>
 
-<table id="review_request_details">
- <colgroup>
-  <col width="0%" />
-  <col width="100%" />
- </colgroup>
-{% for_review_request_fieldset review_request_details %}
- <thead id="fieldset_{{fieldset.fieldset_id}}_head"{% if forloop.first %} class="first-fieldset"{% endif %}>
-  <tr>
-   <th colspan="2">{{fieldset.label}}
-{%  if show_fieldset_required %}
-    <span class="required-flag" aria-label="{% trans 'This field is required' %}" title="{% trans 'This field is required' %}">*</span>
-{%  endif %}
-  </tr>
- </thead>
- <tbody id="fieldset_{{fieldset.fieldset_id}}_body">
-{%  for_review_request_field review_request_details fieldset %}
-  <tr>
-   <th><label for="field_{{field.field_id}}">{{field.label}}:</label></th>
-   <td><span id="field_{{field.field_id}}" data-field-id="{{field.field_id}}"
-             class="field {{field.get_css_classes|join:' '}}"{% for key, value in field.get_data_attributes.items %} data-{{key}}="{{value}}"{% endfor %}>{{field.as_html|safe}}</span></td>
-  </tr>
-{%  end_for_review_request_field %}
- </tbody>
-{% end_for_review_request_fieldset %}
-</table>
 
 <div id="review_request_main">
 {% for_review_request_field review_request_details 'main' %}

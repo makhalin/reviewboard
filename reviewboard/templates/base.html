@@ -118,7 +118,7 @@
         fullName: "{{request.user|user_displayname|escapejs}}",
         gravatarURL: "{% filter escapejs %}{% gravatar_url request.user.email %}{% endfilter %}",
         username: "{{request.user.username|escapejs}}",
-        userPageURL: "{% url 'user' request.user %}",
+        userPageURL: "",
         sessionURL: "{% url 'session-resource' %}",
         timezoneOffset: "{% now 'O' %}",
         watchedReviewGroupsURL: "{% url 'watched-review-groups-resource' request.user %}",

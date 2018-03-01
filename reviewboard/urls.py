@@ -89,15 +89,15 @@ localsite_urlpatterns = patterns(
     (r'^r/', include('reviewboard.reviews.urls')),
 
     # Support
-    url(r'^support/$',
-        'reviewboard.admin.views.support_redirect', name="support"),
+    #url(r'^support/$',
+    #    'reviewboard.admin.views.support_redirect', name="support"),
 
     # User info box
     url(r"^users/(?P<username>[A-Za-z0-9@_\-\.'\+]+)/infobox/$",
         'reviewboard.reviews.views.user_infobox', name="user-infobox"),
 
     # Search
-    url(r'^search/', include(search_urlpatterns)),
+    #url(r'^search/', include(search_urlpatterns)),
 )
 
 localsite_urlpatterns += datagrid_urlpatterns
@@ -110,8 +110,8 @@ urlpatterns += patterns(
 
     (r'^account/', include('reviewboard.accounts.urls')),
 
-    (r'^s/(?P<local_site_name>[A-Za-z0-9\-_.]+)/',
-     include(localsite_urlpatterns)),
+    # (r'^s/(?P<local_site_name>[A-Za-z0-9\-_.]+)/',
+    # include(localsite_urlpatterns)),
 )
 
 urlpatterns += localsite_urlpatterns

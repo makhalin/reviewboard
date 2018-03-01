@@ -39,19 +39,6 @@
    <input type="submit" class="primary" value="{% trans "Log in" %}" />
   </div>
  </div>
-
- <div class="auth-form-row login-links">
-{%  if auth_backends.0.supports_registration %}
-{%   if siteconfig_settings.auth_enable_registration %}
-  <p>
-   <a href="{% url 'register' %}">{% trans "Create an account" %}</a>
-  </p>
-{%   endif %}
-  <p>
-   <a href="{% url 'recover' %}">{% trans "Forgot your password?" %}</a>
-  </p>
-{%  endif %}
- </div>
 </form>
 
 {%  template_hook_point "after-login-form" %}
