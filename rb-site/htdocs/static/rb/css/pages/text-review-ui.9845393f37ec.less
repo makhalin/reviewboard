@@ -1,0 +1,162 @@
+@import (reference) "../defs.less";
+
+
+/****************************************************************************
+ * General text-based review styles
+ ****************************************************************************/
+.review-ui-box .text-review-ui {
+  @header-padding: 8px;
+
+  .border-radius(@box-border-radius);
+
+  &.text-review-ui-has-tabs {
+    .sidebyside thead th {
+      background: @diff-file-color;
+    }
+  }
+
+  .review-ui-header {
+    /*
+     * We set this instead of turning off the border to keep the gradient from
+     * stopping too soon on Chrome and Firefox.
+     */
+    border-bottom-color: transparent;
+    min-height: 0;
+
+    .text-review-ui-views {
+      border-bottom: 1px @diff-file-border-color solid;
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 1em 0 0 5em;
+
+        li {
+          background: lighten(@diff-file-color, 2%);
+          cursor: pointer;
+          display: inline-block;
+          margin: 0;
+          border: 1px @diff-file-border-color solid;
+          border-bottom: 0;
+          font-size: 110%;
+          font-weight: normal;
+          vertical-align: bottom;
+          .border-radius(@box-border-radius @box-border-radius 0 0);
+
+          &.active {
+            background: lighten(@diff-file-color, 5%);
+
+            a {
+              padding: 6px 12px;
+            }
+          }
+
+          a {
+            color: black;
+            display: block;
+            padding: 4px 12px;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+
+  .text-review-ui-text-table,
+  .text-review-ui-rendered-table {
+    .border-radius(0 0 @box-inner-border-radius @box-inner-border-radius);
+
+    .revision-row th {
+      font-weight: bold;
+    }
+
+    tbody:last-child tr:last-child {
+      td:last-child {
+        .border-radius(0 0 @box-inner-border-radius 0);
+      }
+
+      th:first-child {
+        .border-radius(0 0 0 @box-inner-border-radius);
+      }
+    }
+
+    .filename-row {
+      border-bottom: 1px @diff-file-border-color solid;
+    }
+  }
+
+  .review-ui-error {
+    text-align: center;
+    padding: 2em;
+  }
+
+  .sidebyside {
+    .border-radius(0 0 @box-border-radius @box-border-radius);
+    margin-bottom: 0;
+
+    thead th {
+      background: @review-ui-header-bg;
+    }
+  }
+}
+
+.text-review-ui-comment-thumbnail {
+  background: inherit;
+
+  td {
+    background: white;
+  }
+
+  td, th {
+    border-right: 1px #DDD solid;
+
+    &:first-child {
+      border-left: 1px #DDD solid;
+    }
+  }
+
+  tr:first-child {
+    td, th {
+      border-top: 1px #DDD solid;
+    }
+  }
+
+  tr:last-child {
+    td, th {
+      border-bottom: 1px #DDD solid;
+    }
+  }
+}
+
+#attachment_revision_selector, #revision_label {
+  padding-top: 4px;
+  padding-left: 12px;
+}
+
+
+/****************************************************************************
+ * Markdown-specific styles
+ ****************************************************************************/
+.markdown-review-ui {
+  td {
+    padding-left: 2px;
+
+    tbody * {
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      color: blue;
+      text-decoration: underline;
+    }
+
+    h1 {
+      font-size: 2em;
+    }
+
+    ul, ol {
+      padding-left: 2em;
+    }
+  }
+}

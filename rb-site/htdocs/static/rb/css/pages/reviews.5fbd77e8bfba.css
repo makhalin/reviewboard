@@ -1,0 +1,2844 @@
+/****************************************************************************
+ * Review-specific macros
+ ****************************************************************************/
+/* Keep the label from shifting when the pencil icon is hidden/shown. */
+/* Adds a left-facing arrow to the left-hand side of a box. */
+/* Changes the color of an existing callout arrow. */
+/* Sets up an element to appear as a pop-up review request action menu. */
+/****************************************************************************
+ * Actions
+ ****************************************************************************/
+.actions-container {
+  background: #E5D7A8;
+  border: 1px #a88d32 solid;
+  border-bottom: 0;
+  overflow: hidden;
+  -moz-border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /*
+   * This adds some content to the actions list, ensuring that even if it's
+   * empty, there will be a suitable height.
+   */
+}
+.actions-container .actions:before {
+  content: ".";
+  float: left;
+  visibility: hidden;
+  padding: 0.6em 0;
+}
+.actions {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  float: right;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+.actions.actions-left {
+  float: left;
+}
+.actions.actions-left #hide-review-request-link {
+  padding: 0.6em 0.6em 0.3em 0.6em;
+}
+.actions a {
+  color: black;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  padding: 0.6em 1.2em;
+}
+.actions img {
+  vertical-align: middle;
+}
+.actions li {
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .actions li {
+    /* Give some extra room for tapping. */
+    padding: 0.3em;
+  }
+}
+.actions li:hover {
+  background-color: #d7c179;
+}
+.actions li:active {
+  background-color: #ceb359;
+}
+.actions li.has-menu:hover > ul {
+  visibility: visible;
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -moz-opacity: 1;
+}
+.actions li.has-menu > .menu {
+  display: block !important;
+  visibility: hidden;
+  z-index: 110;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -moz-opacity: 0;
+  -webkit-transition: visibility 0.1s, opacity 0.1s;
+  -moz-transition: visibility 0.1s, opacity 0.1s;
+  transition: visibility 0.1s, opacity 0.1s;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .actions li.has-menu > .menu {
+    margin-left: -0.3em;
+    margin-top: 0.3em;
+  }
+}
+.actions li.action-view-diff {
+  background: #FFFFEE;
+  font-size: 105%;
+}
+.actions li.action-view-diff a {
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+.actions .menu {
+  background: #ceb359;
+  border: 1px #a88d32 solid;
+  float: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  z-index: 110;
+  -moz-border-radius: 0 0 6px 6px;
+  -webkit-border-radius: 0 0 6px 6px;
+  border-radius: 0 0 6px 6px;
+  -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+}
+.actions .menu li {
+  background: #E5D7A8;
+  border: 0;
+  float: none;
+  margin: 0;
+  padding: 0;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .actions .menu li {
+    /* Give some extra room for tapping. */
+    padding: 0.3em;
+  }
+}
+.actions .menu li:last-child {
+  -moz-border-radius: 0 0 6px 6px;
+  -webkit-border-radius: 0 0 6px 6px;
+  border-radius: 0 0 6px 6px;
+}
+.actions .menu li:hover {
+  background-color: #d7c179;
+}
+.actions .menu li a {
+  color: black;
+  border: 0;
+  display: block;
+  margin: 0;
+  padding: 8px 10px;
+  text-decoration: none;
+}
+.actions-right-container > li:hover {
+  /* Don't let the action bar's background change by default. */
+  background: inherit;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .actions-right-container > li:hover {
+    background: #d7c179;
+  }
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .actions-right-container > li > .actions-right {
+    /* Mimic the styling of a standard menu, on mobile only. */
+    background: #ceb359;
+    border: 1px #a88d32 solid;
+    float: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    -moz-border-radius: 0 0 6px 6px;
+    -webkit-border-radius: 0 0 6px 6px;
+    border-radius: 0 0 6px 6px;
+    -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+    display: block !important;
+    visibility: hidden;
+    z-index: 110;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+    -webkit-transition: visibility 0.1s, opacity 0.1s;
+    -moz-transition: visibility 0.1s, opacity 0.1s;
+    transition: visibility 0.1s, opacity 0.1s;
+    background: #E5D7A8;
+    display: none;
+    margin-left: 0;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    white-space: normal;
+  }
+  .actions-right-container > li > .actions-right li {
+    background: #E5D7A8;
+    border: 0;
+    float: none;
+    margin: 0;
+    padding: 0;
+  }
+  .actions-right-container > li > .actions-right li:last-child {
+    -moz-border-radius: 0 0 6px 6px;
+    -webkit-border-radius: 0 0 6px 6px;
+    border-radius: 0 0 6px 6px;
+  }
+  .actions-right-container > li > .actions-right li:hover {
+    background-color: #d7c179;
+  }
+  .actions-right-container > li > .actions-right li a {
+    color: black;
+    border: 0;
+    display: block;
+    margin: 0;
+    padding: 8px 10px;
+    text-decoration: none;
+  }
+}
+@media screen and (max-width: 720px) and screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) and screen and (max-width: 720px), screen and (max-width: 720px) and screen and (max-device-width: 720px) and (orientation: landscape), screen and (max-device-width: 720px) and (orientation: landscape) and screen and (max-device-width: 720px) and (orientation: landscape) {
+  .actions-right-container > li > .actions-right li {
+    /* Give some extra room for tapping. */
+    padding: 0.3em;
+  }
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .actions-right-container > li > .actions-right > li {
+    background: transparent;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    display: inline-block;
+    padding: 0.3em;
+    text-align: left;
+  }
+}
+.actions-right-container > li > .actions-right > li:last-child {
+  -moz-border-radius: 0 5px 0 0;
+  -webkit-border-radius: 0 5px 0 0;
+  border-radius: 0 5px 0 0;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .actions-right-container > li > .actions-right > li:last-child {
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+  }
+}
+.actions-right-container .mobile-actions-menu-label {
+  display: none;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .actions-right-container .mobile-actions-menu-label {
+    display: inline-block;
+  }
+}
+.actions.page-tabs {
+  background: #E5D7A8;
+  border: 1px #9E9A7F solid;
+  border-bottom-width: 0;
+  -moz-border-radius: 6px 6px 0 0;
+  -webkit-border-radius: 6px 6px 0 0;
+  border-radius: 6px 6px 0 0;
+  margin-left: 1.5em;
+  overflow: hidden;
+}
+.review-ui-box .actions.page-tabs .active {
+  background: #FEFADF;
+}
+.actions.page-tabs li {
+  border-bottom: 1px #a88d32 solid;
+  min-width: 6em;
+  text-align: center;
+}
+.actions.page-tabs li.active {
+  background: #fffdf3;
+  border: 1px #9E9A7F solid;
+  border-bottom-color: transparent;
+  border-top: 0;
+}
+.actions.page-tabs li.active:first-child {
+  border-left: 0;
+}
+.actions.page-tabs li.active:last-child {
+  border-right: 0;
+}
+.review-request-header {
+  border-bottom: 1px #a88d32 solid;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .review-request-header {
+    text-align: center;
+  }
+}
+/****************************************************************************
+ * Code Mirror
+ ****************************************************************************/
+.CodeMirror {
+  border: 1px #b8b5a0 solid;
+  height: auto;
+  margin: 10px 0 0 0;
+}
+.CodeMirror .CodeMirror-lines {
+  padding: 10px;
+}
+.CodeMirror .CodeMirror-scroll {
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror pre {
+  padding: 0;
+}
+.CodeMirror .cm-header {
+  color: black;
+}
+.CodeMirror .cm-rb-markdown-code {
+  color: #4444cc;
+}
+.CodeMirror .cm-variable-2 {
+  color: black;
+}
+/****************************************************************************
+ * Review Request Box
+ ****************************************************************************/
+.markdown-info {
+  color: blue;
+  font-size: 8pt;
+  font-weight: normal;
+  float: right;
+  line-height: 25px;
+  margin-right: 0.5em;
+  text-decoration: none;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .markdown-info {
+    /* Let the Markdown Reference link flow to the next line. */
+    display: block !important;
+    float: none;
+    margin-top: 0.5em;
+  }
+}
+.markdown-info:hover {
+  text-decoration: underline;
+}
+.review-request {
+  /*
+   * Any changes to this need to be reflected in _resizeLayout in
+   * reviewRequestEditorView.js
+   */
+  background: none;
+  border: 0;
+}
+.review-request label {
+  color: #575012;
+  font-weight: bold;
+}
+.review-request noscript form {
+  margin: 10px 5px 5px 5px;
+  text-align: right;
+}
+.review-request textarea {
+  border: 1px #b8b5a0 solid;
+  height: 1.5em;
+  overflow: hidden;
+}
+.review-request .box-inner {
+  background-image: none;
+}
+.review-request .content {
+  padding: 10px;
+  position: relative;
+}
+.review-request .content.sliding {
+  margin-top: -5px;
+}
+.review-request .content img {
+  border: none;
+}
+.review-request .content .field-container {
+  position: relative;
+}
+.review-request .content .field-container > pre {
+  white-space: pre-wrap;
+  /* CSS 3 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, 1999+ */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* IE 5.5+ */
+  background-color: #FFFFFF;
+  border: 1px #b8b5a0 solid;
+  margin: 10px 0 0 0;
+  padding: 10px;
+}
+.review-request .content-divider {
+  border-top: 1px #C2C1B0 solid;
+}
+.review-request .inline-editor-form.summary-editor {
+  margin-top: -2px;
+  margin-left: -3px;
+}
+.review-request .inline-editor-form input[type='text']:not(:focus) {
+  -moz-box-shadow: 0px 0px 4px rgba(255, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 4px rgba(255, 0, 0, 0.75);
+  box-shadow: 0px 0px 4px rgba(255, 0, 0, 0.75);
+}
+.review-request .main {
+  background-color: #FEFADF;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#fffdf3), to(#FEFADF));
+  background-image: -moz-linear-gradient(top, #fffdf3, #FEFADF);
+  background-image: -ms-linear-gradient(top, #fffdf3, #FEFADF);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fffdf3), color-stop(100%, #FEFADF));
+  background-image: -webkit-linear-gradient(top, #fffdf3, #FEFADF);
+  background-image: -o-linear-gradient(top, #fffdf3, #FEFADF);
+  background-image: linear-gradient(top, #fffdf3, #FEFADF);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffdf3', endColorstr='#FEFADF', GradientType=0);
+  border: 1px #9E9A7F solid;
+  border-top: 0;
+  -moz-border-radius: 0 0 6px 6px;
+  -webkit-border-radius: 0 0 6px 6px;
+  border-radius: 0 0 6px 6px;
+  clear: both;
+  padding: 0.5em;
+}
+.review-request #required-field-legend {
+  color: darkRed;
+  font-weight: bold;
+  padding: 10px;
+}
+.review-request .header {
+  padding: 10px;
+}
+.review-request .star {
+  float: left;
+  margin-right: 10px;
+}
+.review-request #review_request_details {
+  border-spacing: 0px;
+  float: right;
+  width: 300px;
+  padding: 10px;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .review-request #review_request_details {
+    /* Give the details pane its own full row above the textareas. */
+    float: none;
+    width: auto;
+  }
+}
+.review-request #review_request_details a {
+  color: #0000EE;
+  text-decoration: none;
+}
+.review-request #review_request_details th {
+  color: #39350b;
+  font-weight: bold;
+  text-align: left;
+  white-space: nowrap;
+}
+.review-request #review_request_details tbody td,
+.review-request #review_request_details tbody th {
+  padding: 0;
+  vertical-align: top;
+}
+.review-request #review_request_details tbody th,
+.review-request #review_request_details tbody td .field {
+  padding-top: 3px;
+}
+.review-request #review_request_details tbody td {
+  padding-left: 1em;
+}
+.review-request #review_request_details tbody td span {
+  display: inline-block;
+  margin-right: 4px;
+  word-wrap: break-word;
+}
+.review-request #review_request_details tbody td .editicon {
+  margin-left: 0;
+}
+.review-request #review_request_details tbody th {
+  padding-bottom: 1.5em;
+  padding-left: 1em;
+  text-align: right;
+  white-space: nowrap;
+}
+.review-request #review_request_details thead.first-fieldset th {
+  padding-top: 0;
+}
+.review-request #review_request_details thead th {
+  color: #575012;
+  font-size: 120%;
+  padding: 2em 0 1em 0;
+}
+.review-request #review_request_details #target_people .inactive {
+  text-decoration: line-through;
+}
+.review-request #review_request_details .buttons {
+  display: block;
+  margin-bottom: 1em;
+  padding: 6px 0 0 0;
+}
+.review-request #review_request_details .buttons input {
+  font-size: 11px;
+}
+.review-request #review_request_extra {
+  clear: both;
+}
+.review-request #review_request_extra h3 {
+  color: #575012;
+  font-size: 120%;
+  margin: 0;
+  padding: 0;
+}
+.review-request #review_request_extra label.textarea-label {
+  display: block;
+  min-height: 16px;
+}
+.review-request #review_request_extra label.textarea-label img {
+  vertical-align: middle;
+}
+.review-request #review_request_main {
+  margin-right: 310px;
+  position: relative;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .review-request #review_request_main {
+    margin-right: 0;
+  }
+}
+.review-request #review_request_main label {
+  font-size: 120%;
+}
+.review-request #review-request-warning {
+  background-color: #F5A9A9;
+  border: 1px solid #FF0000;
+  display: none;
+  font-weight: bold;
+  padding: 5px;
+  text-align: center;
+}
+.review-request #diff_revision {
+  font-weight: bold;
+  text-align: right;
+  vertical-align: bottom;
+}
+.review-request #status {
+  color: #39350b;
+  margin: 5px 0;
+}
+.review-request #summary_wrapper {
+  line-height: 2.6em;
+  padding: 0;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .review-request #summary_wrapper {
+    margin-bottom: 1em;
+  }
+}
+.review-request #summary_wrapper label,
+.review-request #summary_wrapper #field_summary {
+  font-size: 14px;
+}
+.review-request #summary_wrapper label {
+  margin-right: 0.5em;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .review-request #summary_wrapper label {
+    /* Hide the Summary label on mobile. */
+    display: none;
+  }
+}
+.review-request #summary_wrapper .rb-icon-edit {
+  vertical-align: text-bottom;
+}
+.review-request #summary_wrapper #field_summary {
+  display: inline;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .review-request #summary_wrapper #field_summary {
+    font-size: 120%;
+  }
+}
+.review-request #summary_wrapper #field_summary a {
+  color: black;
+  text-decoration: none;
+}
+.review-request .actions-container .star {
+  margin: 5px;
+}
+.review-request #updated_time,
+.review-request #created_time {
+  text-align: right;
+  vertical-align: bottom;
+}
+.review-request .editicon {
+  text-decoration: none;
+}
+.review-request .required-flag {
+  color: darkred;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 0 2px;
+}
+#review_request_form input[type='text'],
+#review_request_form textarea {
+  width: 400px;
+}
+/****************************************************************************
+ * Review UIs
+ ****************************************************************************/
+.review-ui-box.has-review-ui-box-content .actions-container {
+  -moz-border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+}
+.review-ui-box.has-review-ui-box-content .actions-container .actions > li:last-child {
+  -moz-border-radius: 0 5px 0 0;
+  -webkit-border-radius: 0 5px 0 0;
+  border-radius: 0 5px 0 0;
+}
+.review-ui-box .actions-container {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.review-ui-box .actions-container .actions > li:last-child {
+  -moz-border-radius: 0 5px 5px 0;
+  -webkit-border-radius: 0 5px 5px 0;
+  border-radius: 0 5px 5px 0;
+}
+.review-ui-box .review-ui-box-content {
+  border: 1px #9E9A7F solid;
+  border-top: 0;
+  clear: both;
+  padding: 0;
+  min-height: 5em;
+}
+.review-ui-box .review-ui-header {
+  border-bottom: 1px #cacaca solid;
+  background: #FEFADF;
+  min-height: 2em;
+}
+.review-ui-box .review-ui-header h1 {
+  margin: 0;
+  padding: 8px;
+  font-size: 10pt;
+}
+/****************************************************************************
+ * Reviews
+ ****************************************************************************/
+#reviews {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #reviews {
+    margin: 0;
+  }
+}
+#reviews .box {
+  margin: 2em 0;
+  position: relative;
+}
+#reviews .box:before,
+#reviews .box:after {
+  position: absolute;
+  left: -19px;
+  top: 17px;
+  right: 100%;
+  border: 1px transparent solid;
+  content: " ";
+  display: block;
+  width: 0;
+  height: 0;
+}
+#reviews .box:before {
+  border-right-color: #888A85;
+  border-width: 10px;
+}
+#reviews .box:after {
+  border-width: 9px;
+  border-right-color: white;
+  margin-top: 1px;
+  margin-left: 2px;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #reviews .box {
+    margin-top: 1em;
+  }
+}
+#reviews .box-container {
+  padding-left: 75px;
+  width: auto;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #reviews .box-container {
+    padding-left: 0;
+  }
+}
+#reviews .box-statuses {
+  float: left;
+  text-align: center;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #reviews .box-statuses {
+    margin-top: 3em;
+    float: none;
+  }
+}
+#reviews .box-statuses .box-status {
+  position: relative;
+  -webkit-transition: 0.2s linear all;
+  -moz-transition: 0.2s linear all;
+  transition: 0.2s linear all;
+}
+#reviews .box-statuses .box-status.has-issues .gravatar-container {
+  border-color: #caad00;
+}
+#reviews .box-statuses .box-status.ship-it .gravatar-container {
+  border-color: #6ebf20;
+}
+#reviews .box-statuses .box-status.ship-it .fix-it-label {
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+#reviews .box-statuses .box-status.ship-it.has-issues .gravatar-container {
+  border-color: #caad00;
+}
+#reviews .box-statuses .box-status.ship-it.has-issues .fix-it-label {
+  z-index: 1;
+}
+#reviews .box-statuses .box-status.ship-it.has-issues .ship-it-label {
+  position: absolute;
+  top: 3px;
+  margin-left: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+#reviews .box-statuses .box-status .gravatar-container {
+  background: white;
+  border: 2px #CCC dotted;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 48px;
+  height: 48px;
+  margin: 0 5px;
+  -webkit-transition: border-color 0.4s ease-in-out;
+  -moz-transition: border-color 0.4s ease-in-out;
+  transition: border-color 0.4s ease-in-out;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #reviews .box-statuses .box-status .gravatar-container {
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+#reviews .box-statuses .box-status .gravatar-container img {
+  border: 2px white solid;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#reviews .box-statuses .box-status .labels-container {
+  margin-top: -5px;
+  position: relative;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #reviews .box-statuses .box-status .labels-container {
+    display: inline-block;
+    margin-top: 0;
+    top: 4px;
+  }
+}
+#reviews .box-statuses .box-status label {
+  border: 1px #888888 solid;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  display: block;
+  line-height: 1.5;
+  margin-bottom: 1.5em;
+  padding: 2px 4px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4.5em;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #reviews .box-statuses .box-status label {
+    margin-bottom: 0;
+  }
+}
+#reviews .box-statuses .box-status label.ship-it-label {
+  border: 1px #489300 solid;
+  background: #aeff60;
+  /*
+           * NOTE: The ';' at the end here is intentional. It forces Less to
+           *       preserve the commas, rather than assuming they're separating
+           *       arguments to the mixin.
+           */
+  -webkit-transition: padding 0.2s ease-in-out, top 0.2s ease-in-out, margin 0.2s ease-in-out;
+  -moz-transition: padding 0.2s ease-in-out, top 0.2s ease-in-out, margin 0.2s ease-in-out;
+  transition: padding 0.2s ease-in-out, top 0.2s ease-in-out, margin 0.2s ease-in-out;
+}
+#reviews .box-statuses .box-status label.fix-it-label {
+  border: 1px #b09700 solid;
+  background: #fff4B0;
+  -webkit-transition: left 0.5s ease-in-out, opacity 0.8s ease;
+  -moz-transition: left 0.5s ease-in-out, opacity 0.8s ease;
+  transition: left 0.5s ease-in-out, opacity 0.8s ease;
+}
+#reviews > .changedesc,
+#reviews > .review {
+  clear: both;
+}
+#reviews .box {
+  border: 0;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #reviews .box:after,
+  #reviews .box:before {
+    content: none;
+  }
+}
+#reviews .box.collapsed:after {
+  border-right-color: #ECECEE;
+}
+#reviews .box.collapsed .body {
+  display: none;
+}
+#reviews .box.collapsed .box-inner {
+  background: #ECECEE;
+}
+#reviews .box.collapsed .banner {
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+#reviews .box .box-inner {
+  background: none;
+  min-height: 5em;
+  overflow: hidden;
+}
+#reviews .box .collapse-button {
+  border: 1px #333333 solid;
+  cursor: pointer;
+  float: left;
+  margin-right: 0.5em;
+  margin-top: -1px;
+  padding: 0;
+}
+#reviews .review.has-draft .box:after {
+  border-right-color: #CDFF9C;
+}
+#reviews .review.has-draft .header {
+  background: #CDFF9C;
+}
+#reviews .review .banners .banner {
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#reviews .review .banners .banner.floating {
+  border-top: 0;
+  margin-top: 0;
+}
+#reviews .review .body {
+  clear: both;
+}
+#reviews .review .body pre {
+  margin-bottom: 0;
+  white-space: pre-wrap;
+  /* CSS 3 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, 1999+ */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* IE 5.5+ */
+}
+#reviews .review .body .comment-text:target {
+  background-color: #E7EDF3;
+  border: 1px solid #3465A4;
+  padding: 1em;
+}
+#reviews .review .body .body_top,
+#reviews .review .body .body_bottom {
+  margin: 2em;
+}
+#reviews .review .body-top-comment-section,
+#reviews .review .body-bottom-comment-section,
+#reviews .review .comments > dd,
+#reviews .review .review-comments > dd {
+  margin: 0 2em 4em 2em;
+}
+#reviews .review .body-top-comment-section:last-child,
+#reviews .review .body-bottom-comment-section:last-child,
+#reviews .review .comments > dd:last-child,
+#reviews .review .review-comments > dd:last-child {
+  margin-bottom: 2em;
+}
+#reviews .review .box {
+  background: white;
+  border: 0;
+}
+#reviews .review .box .box-main {
+  padding: 0;
+}
+#reviews .review .box-inner {
+  background: white;
+  border: 1px #999999 solid;
+}
+#reviews .review .controls {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+#reviews .review .controls a {
+  color: black;
+  display: inline-block;
+  text-decoration: none;
+  background: #ECECEC;
+  border: 1px #C3C3C3 solid;
+  margin-top: 1em;
+  padding: 0.6em 1em;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+}
+#reviews .review .controls a:hover {
+  background: #F3F3F3;
+}
+#reviews .review .controls a .fa {
+  margin-right: 5px;
+}
+#reviews .review .controls li {
+  display: inline;
+}
+#reviews .review .comments,
+#reviews .review .review-comments {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  /*
+     * Cover up the left and right borders we add for <dt> to get a clean
+     * rounded border. We don't want them sticking out of the box.
+     */
+  overflow: hidden;
+}
+#reviews .review .comments > dd,
+#reviews .review .review-comments > dd {
+  margin-top: 2em;
+}
+#reviews .review .comments > dt thead th,
+#reviews .review .review-comments > dt thead th {
+  font-weight: normal;
+}
+#reviews .review .comments .comment_container,
+#reviews .review .review-comments .comment_container {
+  border-top: 1px #C0C0C0 solid;
+  border-bottom: 1px #C0C0C0 solid;
+}
+#reviews .review .comments .filename a,
+#reviews .review .review-comments .filename a {
+  color: black;
+  font-weight: bold;
+}
+#reviews .review .comments .file-attachment,
+#reviews .review .review-comments .file-attachment {
+  background: #F0F0F0;
+  border-bottom: 1px #C0C0C0 solid;
+  padding: 5px;
+}
+#reviews .review .comments .file-attachment .file-attachment-comment-header,
+#reviews .review .review-comments .file-attachment .file-attachment-comment-header {
+  font-size: 120%;
+  white-space: nowrap;
+}
+#reviews .review .comments .file-attachment .file-attachment-comment-header a,
+#reviews .review .review-comments .file-attachment .file-attachment-comment-header a {
+  text-decoration: none;
+}
+#reviews .review .comments .file-attachment .file-attachment-comment-header img,
+#reviews .review .review-comments .file-attachment .file-attachment-comment-header img {
+  padding-right: 10px;
+  vertical-align: middle;
+}
+#reviews .review .comments .file-attachment .file-attachment-comment-header .caption,
+#reviews .review .review-comments .file-attachment .file-attachment-comment-header .caption {
+  color: black;
+  margin: 5px 0 0 32px;
+}
+#reviews .review .comments .file-attachment .file-attachment-comment-header .filename,
+#reviews .review .review-comments .file-attachment .file-attachment-comment-header .filename {
+  color: black;
+  font-weight: bold;
+  margin: 0;
+  vertical-align: middle;
+}
+#reviews .review .comments .file-attachment .thumbnail,
+#reviews .review .review-comments .file-attachment .thumbnail {
+  margin-top: 0.5em;
+}
+#reviews .review .comments .screenshot,
+#reviews .review .review-comments .screenshot {
+  background: #F0F0F0;
+  border: 1px #C0C0C0 solid;
+  font-size: 120%;
+}
+#reviews .review .comments .screenshot img,
+#reviews .review .review-comments .screenshot img {
+  padding: 5px;
+}
+#reviews .review .comments .screenshot .filename,
+#reviews .review .review-comments .screenshot .filename {
+  display: block;
+  margin: 0;
+  padding: 5px 10px;
+}
+#reviews .review .comments .sidebyside th,
+#reviews .review .review-comments .sidebyside th {
+  /*
+         * The line numbers aren't clickable in the comment fragments in
+         * reviews, so show a standard cursor instead of a pointer cursor.
+         */
+  cursor: initial;
+}
+#reviews .review .comments .sidebyside .filename-row th,
+#reviews .review .review-comments .sidebyside .filename-row th {
+  background: #F0F0F0;
+}
+#reviews .review .diff-error tbody {
+  border: 1px #f3da00 solid;
+}
+#reviews .review .reply-comments {
+  margin: 3em 0 2em 0;
+  padding: 0;
+}
+#reviews .review .reply-comments > li {
+  display: inline;
+}
+#reviews .review .reply-comments > li.draft dt label a {
+  color: #4e9a06;
+}
+#reviews .review .reply-comments > li dl dt label {
+  display: block;
+  line-height: 16px;
+  vertical-align: top;
+}
+#reviews .review .reply-comments > li dl dt label a {
+  color: #AB5603;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: none;
+}
+#reviews .review .reply-comments > li dl dt label .gravatar-container {
+  background: white;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  display: inline-block;
+  overflow: hidden;
+  width: 32px;
+  height: 32px;
+}
+#reviews .review .reply-comments > li dl dt label .user-reply-info {
+  display: inline-block;
+  overflow: hidden;
+}
+#reviews .review .reply-comments > li dl dt label .user-reply-info time {
+  display: block;
+}
+#reviews .review .reply-comments > li dl dt span {
+  color: #487858;
+  font-weight: normal;
+}
+#reviews .review .reply-comments > li dl {
+  /*
+         * Set a border-bottom to prevent a bug in IE where, without a
+         * border-bottom, the content of the dl will shift left by the
+         * border-left size for every following item.
+         */
+  border-bottom: 1px transparent solid;
+  margin: 4em 0 2em 0;
+  padding: 0;
+}
+#reviews .review .reply-comments > li dl dd {
+  margin-left: 0;
+}
+#view_controls {
+  list-style: none;
+  margin: 1em 0;
+  padding: 1em;
+  text-align: center;
+}
+#view_controls a {
+  background: #E0E0E0;
+  border: 1px #C3C3C3 solid;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  color: black;
+  display: inline-block;
+  padding: 0.6em 1em;
+  text-decoration: none;
+}
+#view_controls a:hover {
+  background: #ECECEC;
+}
+#view_controls li {
+  display: inline-block;
+  margin: 1em;
+  padding: 0;
+}
+#view_controls .rb-icon {
+  vertical-align: top;
+}
+.sidebyside.loading {
+  /* Helps us better keep the size, as long as the comment is within a chunk. */
+  padding: 2px 2px 1px 2px;
+  width: 100%;
+}
+.sidebyside.loading tbody {
+  background-color: #F3F3F3;
+}
+.sidebyside.loading tbody td {
+  padding: 4px;
+  font-size: 20px;
+  text-align: center;
+}
+/****************************************************************************
+ * Change Descriptions
+ ****************************************************************************/
+#field_changedescription {
+  white-space: pre-wrap;
+  /* CSS 3 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, 1999+ */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* IE 5.5+ */
+  background-color: white;
+  border: 1px #b8b5a0 solid;
+  margin: 10px 0 0 0;
+  padding: 10px;
+}
+.changedesc.box {
+  background-color: #fefadf;
+  background-color: #FEFADF;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#fffef8), to(#FEFADF));
+  background-image: -moz-linear-gradient(top, #fffef8, #FEFADF);
+  background-image: -ms-linear-gradient(top, #fffef8, #FEFADF);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fffef8), color-stop(100%, #FEFADF));
+  background-image: -webkit-linear-gradient(top, #fffef8, #FEFADF);
+  background-image: -o-linear-gradient(top, #fffef8, #FEFADF);
+  background-image: linear-gradient(top, #fffef8, #FEFADF);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffef8', endColorstr='#FEFADF', GradientType=0);
+}
+.changedesc.box .box-inner {
+  border: 1px #9E9A7F solid;
+}
+.changedesc .body {
+  clear: both;
+  padding: 10px;
+  /* Field labels */
+  /* Used in the textarea field diffs and the Change Summary section. */
+  /*
+     * File attachment/screenshot change lists.
+     *
+     * These differ from the other field change lists in that they have
+     * mini-section labels underneath for each file.
+     */
+  /* Displays changes for field values, with "-" and "+" markers. */
+  /* The "Change Summary" section. */
+  /* The diff for text areas. */
+  /* Styling for the "Diff" field updates. */
+  /* Styles for the file listing for the "Diff" field. */
+  /*
+     * Secondary fields are in more of a Field: Value display, with the
+     * fields lining up.
+     */
+}
+.changedesc .body > ul {
+  list-style: none;
+  margin: 1em 0 1em 0;
+  padding: 0;
+}
+.changedesc .body > ul > li {
+  margin: 3em 0 0 0;
+}
+.changedesc .body > ul > li:first-child {
+  margin-top: 0;
+}
+.changedesc .body a {
+  color: default;
+  text-decoration: none;
+}
+.changedesc .body a:hover {
+  text-decoration: underline;
+}
+.changedesc .body h3 {
+  color: #575012;
+  font-size: 110%;
+  margin: 1em 0 0.5em 0;
+  padding: 0;
+}
+.changedesc .body h3.status {
+  /* Add some separation between this and the other fields. */
+  margin-bottom: 2em;
+}
+.changedesc .body h3.status:last-child {
+  /*
+           * If it's the last child, we don't want that separation, or it'll
+           * have an odd amount of extra space.
+           */
+  margin-bottom: 0.5em;
+}
+.changedesc .body h3.status .value {
+  color: black;
+  font-weight: normal;
+}
+.changedesc .body > pre {
+  background-color: #FFFFFF;
+  border: 1px #b8b5a0 solid;
+  padding: 10px;
+  font-size: 9pt;
+  white-space: pre-wrap;
+  /* CSS 3 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, 1999+ */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* IE 5.5+ */
+}
+.changedesc .body .caption-changed {
+  margin: 2em 0 0 2em;
+  padding: 0;
+}
+.changedesc .body .caption-changed a {
+  /* Treat the link like a field. */
+  font-weight: bold;
+}
+.changedesc .body .caption-changed td,
+.changedesc .body .caption-changed th {
+  vertical-align: top;
+}
+.changedesc .body .caption-changed td {
+  padding-left: 1em;
+}
+.changedesc .body .caption-changed th {
+  text-align: right;
+}
+.changedesc .body .changed {
+  border: 1px #b8b5a0 solid;
+  border-collapse: collapse;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+}
+.changedesc .body .changed a {
+  color: blue;
+  text-decoration: none;
+}
+.changedesc .body .changed a:first-child {
+  margin-left: 0;
+}
+.changedesc .body .changed a:hover {
+  text-decoration: underline;
+}
+.changedesc .body .changed td,
+.changedesc .body .changed th {
+  font-family: monospace;
+  padding: 0.3em 0.6em;
+}
+.changedesc .body .changed td {
+  background: #FEFEFE;
+}
+.changedesc .body .changed .new-value .marker {
+  background: #caf2c1;
+}
+.changedesc .body .changed .old-value .marker {
+  background: #f5d0d6;
+}
+.changedesc .body .changedesc-text {
+  margin-bottom: 2em;
+}
+.changedesc .body .changedesc-text:last-child {
+  margin-bottom: 0;
+}
+.changedesc .body .diffed-text-area {
+  background: white;
+  border: 1px #b8b5a0 solid;
+  border-collapse: collapse;
+  padding: 0;
+  width: 100%;
+  /* The '-' or '+' marker. */
+}
+.changedesc .body .diffed-text-area a {
+  text-decoration: underline;
+}
+.changedesc .body .diffed-text-area pre {
+  background: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  white-space: pre-wrap;
+  /* CSS 3 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, 1999+ */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* IE 5.5+ */
+}
+.changedesc .body .diffed-text-area td {
+  font-family: monospace;
+  padding: 2px 4px;
+  vertical-align: top;
+  white-space: pre-wrap;
+  /* CSS 3 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, 1999+ */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* IE 5.5+ */
+}
+.changedesc .body .diffed-text-area .delete {
+  /* The '-' or '+' marker. */
+}
+.changedesc .body .diffed-text-area .delete .line {
+  background: #ffe0e5;
+}
+.changedesc .body .diffed-text-area .delete .marker {
+  color: #990000;
+  background: #f5d0d6;
+}
+.changedesc .body .diffed-text-area .insert {
+  /* The '-' or '+' marker. */
+}
+.changedesc .body .diffed-text-area .insert .line {
+  background: #dfffd7;
+}
+.changedesc .body .diffed-text-area .insert .marker {
+  background: #caf2c1;
+}
+.changedesc .body .diffed-text-area .line {
+  width: 100%;
+  /*
+         * Make sure any images in the Markdown-rendered text are kept
+         * small, but with the correct aspect ratio.
+         */
+}
+.changedesc .body .diffed-text-area .line img {
+  width: auto;
+  max-height: 100px;
+}
+.changedesc .body .diffed-text-area .marker {
+  background: #F9F9F9;
+  font-family: monospace;
+  font-size: 13px;
+  font-weight: bold;
+  text-align: center;
+}
+.changedesc .body .diffed-text-area .replace-new {
+  /* The '-' or '+' marker. */
+}
+.changedesc .body .diffed-text-area .replace-new .line {
+  background: #dfffd7;
+}
+.changedesc .body .diffed-text-area .replace-new .line .hl {
+  background: #acee9c;
+}
+.changedesc .body .diffed-text-area .replace-new .marker {
+  background: #caf2c1;
+}
+.changedesc .body .diffed-text-area .replace-old {
+  /* The '-' or '+' marker. */
+}
+.changedesc .body .diffed-text-area .replace-old .line {
+  background: #ffe0e5;
+}
+.changedesc .body .diffed-text-area .replace-old .line .hl {
+  background: #f7b5c0;
+}
+.changedesc .body .diffed-text-area .replace-old .marker {
+  background: #f5d0d6;
+}
+.changedesc .body .diff-changes .line-counts {
+  margin-left: 0.5em;
+}
+.changedesc .body .diff-changes .line-counts .delete-count {
+  color: darkred;
+}
+.changedesc .body .diff-changes .line-counts .insert-count {
+  color: darkgreen;
+}
+.changedesc .body .diff-index {
+  margin-bottom: 0;
+}
+.changedesc .body .diff-index .diff-file-icon {
+  min-width: 20px;
+  min-height: 20px;
+}
+.changedesc .body .diff-index .diff-file-info {
+  /* Compensate for the lack of diff-chunks-cell column. */
+  width: 100%;
+}
+.changedesc .body .primary-fields h3:first-child {
+  margin-top: 2em;
+}
+.changedesc .body .secondary-fields {
+  width: 100%;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .changedesc .body .secondary-fields {
+    display: block;
+  }
+}
+.changedesc .body .secondary-fields h3 {
+  margin: 2px 1em 0 0;
+  padding: 0;
+  text-align: right;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .changedesc .body .secondary-fields h3 {
+    margin: 0;
+    text-align: left;
+  }
+}
+.changedesc .body .secondary-fields > tbody > tr > td,
+.changedesc .body .secondary-fields > tbody > tr > th {
+  padding: 0.5em 0;
+  vertical-align: top;
+  white-space: nowrap;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .changedesc .body .secondary-fields > tbody > tr > td,
+  .changedesc .body .secondary-fields > tbody > tr > th {
+    display: block;
+    white-space: normal;
+  }
+}
+.changedesc .body .secondary-fields > tbody > tr > td {
+  /*
+           * Between this and the white-space: nowrap above, the field labels
+           * will end up taking the minimum size without wrapping, and the
+           * rest of the width will be given to the value.
+           */
+  width: 100%;
+}
+.changedesc .body .secondary-fields > tbody > tr > td > p {
+  /*
+             * If the field value is rendered inside a <p>, make sure it
+             * aligns with the field label.
+             *
+             * Note that the label has a larger font than this, so we can't
+             * reuse the same pixel value. We have to bump it.
+             */
+  /* Don't take up more room than we need in the last <p>. */
+}
+.changedesc .body .secondary-fields > tbody > tr > td > p:first-child {
+  margin-top: 3px;
+}
+.changedesc .body .secondary-fields > tbody > tr > td > p:last-child {
+  margin-bottom: 0;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .changedesc .body .secondary-fields > tbody > tr > th {
+    margin-top: 2em;
+  }
+}
+.box .header {
+  -moz-border-radius: 6px 6px 0 0;
+  -webkit-border-radius: 6px 6px 0 0;
+  border-radius: 6px 6px 0 0;
+  padding: 9px;
+}
+.box .header a {
+  color: black;
+  text-decoration: none;
+}
+.box .header .header-details {
+  overflow: hidden;
+}
+.box .header .reviewer {
+  float: left;
+  font-size: 110%;
+  font-weight: bold;
+  padding-top: 1px;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .box .header .reviewer {
+    float: none;
+  }
+}
+.box .header .reviewer a {
+  position: relative;
+}
+.box .header .posted_time {
+  color: #555;
+  text-align: right;
+  padding-top: 2px;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .box .header .posted_time {
+    margin-top: 0.5em;
+    text-align: left;
+  }
+}
+/****************************************************************************
+ * Updates Bubble
+ ****************************************************************************/
+#updates-bubble {
+  background: #FFF1AB;
+  border-top: 1px #888866 solid;
+  border-left: 1px #888866 solid;
+  bottom: 0;
+  -moz-border-radius: 10px 0 0 0;
+  -webkit-border-radius: 10px 0 0 0;
+  border-radius: 10px 0 0 0;
+  -moz-box-shadow: -1px -1px 2px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: -1px -1px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: -1px -1px 2px rgba(0, 0, 0, 0.15);
+  font-size: 110%;
+  padding: 1em;
+  position: fixed;
+  right: 0;
+  z-index: 130;
+}
+#updates-bubble a,
+#updates-bubble a:visited {
+  color: #0000CC;
+  text-decoration: none;
+}
+#updates-bubble #updates-bubble-buttons {
+  margin-left: 2em;
+}
+/****************************************************************************
+ * Review Form
+ ****************************************************************************/
+#review-form {
+  overflow: auto;
+  padding: 10px;
+}
+#review-form .add-link {
+  font-size: 110%;
+}
+#review-form .add-link:visited {
+  color: #0000C0;
+}
+#review-form label {
+  color: black;
+  font-weight: bold;
+  margin-top: 10px;
+}
+#review-form dt label {
+  color: #AB5603;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: none;
+}
+#review-form .comment-text-field > .edit-field {
+  margin: 1em 0;
+}
+#review-form .comment-text-field > .edit-field .comment-text-field label {
+  display: block;
+  line-height: 16px;
+  vertical-align: top;
+}
+#review-form #review-form-comments {
+  background: none;
+}
+#review-form #review-form-comments pre {
+  white-space: pre-wrap;
+  /* CSS 3 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, 1999+ */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* IE 5.5+ */
+}
+#review-form #review-form-comments .spinner {
+  font-size: 20px;
+}
+#review-form #review-form-comments .comments {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#review-form #review-form-comments .comments > li {
+  margin: 2em 0;
+  padding: 0;
+}
+#review-form #review-form-comments .comments > li .edit-fields {
+  margin-left: 2em;
+}
+#review-form #review-form-comments.draft dt label a {
+  color: #4e9a06;
+}
+#review-form #review-form-comments dl dt label {
+  display: block;
+  line-height: 16px;
+  vertical-align: top;
+}
+#review-form #review-form-comments dl dt label a {
+  color: #AB5603;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: none;
+}
+#review-form #review-form-comments dl dt label .gravatar-container {
+  background: white;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  display: inline-block;
+  overflow: hidden;
+  width: 32px;
+  height: 32px;
+}
+#review-form #review-form-comments dl dt label .user-reply-info {
+  display: inline-block;
+  overflow: hidden;
+}
+#review-form #review-form-comments dl dt label .user-reply-info time {
+  display: block;
+}
+#review-form #review-form-comments dl dt span {
+  color: #487858;
+  font-weight: normal;
+}
+#review-form #review-form-comments dd {
+  margin: 0;
+}
+/****************************************************************************
+ * Uploaded files
+ ****************************************************************************/
+.file-container {
+  float: left;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .file-container {
+    float: none;
+  }
+}
+.file-container .file:hover .file-actions-container {
+  display: block;
+}
+.file-container .file {
+  border: 1px #CCCCCC solid;
+  display: block;
+  position: relative;
+  margin: 1em 1.5em 0.5em 0;
+  max-width: 300px;
+  -webkit-transition: 0.2s opacity linear;
+  -moz-transition: 0.2s opacity linear;
+  transition: 0.2s opacity linear;
+  width: 300px;
+  -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /*
+     * This container provides the padding necessary to display a shadow
+     * around all but one edges of the actions list. We clip the shadow on
+     * the side sharing a border with the file attachment thumbnail.
+     */
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .file-container .file {
+    margin: 1.5em 0 0 0;
+  }
+}
+.file-container .file .fa-spinner {
+  font-size: 37.5px;
+  line-height: 150px;
+  vertical-align: middle;
+  text-align: center;
+}
+.file-container .file .file-actions-container {
+  display: none;
+  overflow: hidden;
+  padding: 4px;
+  position: absolute;
+  left: 100%;
+  top: -5px;
+  z-index: 110;
+}
+.file-container .file .file-actions-container.left {
+  padding-right: 0;
+}
+.file-container .file .file-actions-container.left .file-actions {
+  border-right-color: #EEEEEE;
+  margin-left: 4px;
+}
+.file-container .file .file-actions-container.right {
+  padding-left: 0;
+}
+.file-container .file .file-actions-container.right .file-actions {
+  border-left-color: #EEEEEE;
+}
+.file-container .file .file-actions {
+  background-color: #FCFCFC;
+  border: 1px #CCCCCC solid;
+  -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 119px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+.file-container .file .file-actions li {
+  margin: 0;
+  padding: 0;
+}
+.file-container .file .file-actions li a {
+  color: #333;
+  display: block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+}
+.file-container .file .file-actions li a:hover {
+  background: #efefef;
+}
+.file-container .file .file-thumbnail-container {
+  background: white;
+  height: 150px;
+  text-align: center;
+}
+.file-container .file .file-thumbnail-container a {
+  color: black;
+  text-decoration: none;
+}
+.file-container .file .file-thumbnail-container pre {
+  font-size: x-small;
+}
+.file-container .file .file-thumbnail-container .file-thumbnail-overlay {
+  max-height: 150px;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 30;
+}
+.file-container .file .file-thumbnail-container .file-thumbnail {
+  max-height: 150px;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 0;
+  overflow: hidden;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  margin: auto;
+}
+.file-container .file .file-thumbnail-container .file-thumbnail-clipped {
+  border: 0;
+  overflow: hidden;
+  text-align: left;
+  padding: 1em 0 0 1em;
+  font-size: 8pt;
+  /* Override the styling used for the <pre>s for fields. */
+}
+.file-container .file .file-thumbnail-container .file-thumbnail-clipped pre {
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+.file-container .file .file-caption-container {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+  -moz-opacity: 0.9;
+  background-color: #FCFCFC;
+  border-top: 1px #EEEEEE solid;
+  bottom: 0;
+  line-height: 2.5em;
+  padding: 0 30px;
+  position: absolute;
+  text-align: center;
+  z-index: 31;
+  max-width: 298px;
+  width: 298px;
+}
+.file-container .file .file-caption-container a {
+  color: black;
+  text-decoration: none;
+}
+.file-container .file .file-caption-container a.empty-caption {
+  color: gray;
+  font-style: italic;
+}
+.file-container .file .file-caption-container .file-caption {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -moz-opacity: 1;
+  line-height: 31px;
+  height: 31px;
+  text-shadow: 0px 0px 2px white;
+}
+.file-container .file .file-caption-container .file-caption .buttons {
+  /*
+           * This provides enough padding to cleanly cover much of any file
+           * attachment's header below.
+           */
+  position: absolute;
+  padding: 5px 0;
+  /* Line up with .file's side borders. */
+  margin: 0 0 0 -31px;
+  text-align: center;
+  background: #f2f2f2;
+  border: 1px #CCCCCC solid;
+  border-top: 0;
+  display: block;
+  width: 300px;
+  -moz-border-radius: 0 0 6px 6px;
+  -webkit-border-radius: 0 0 6px 6px;
+  border-radius: 0 0 6px 6px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  z-index: 20;
+}
+.file-container .file .file-caption-container .inline-editor-form > input[type='text'] {
+  background: transparent;
+  border: 0;
+  font-family: inherit;
+  font-size: inherit;
+  height: 31px;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  /*
+         * The 4px is needed to align the input with the text. It matches
+         * the margin between the text and pencil.
+         */
+  padding: 0 4px 0 0;
+  text-align: inherit;
+  vertical-align: bottom;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /*
+         * The box shadow doesn't display correctly in file attachment
+         * thumbnails, so hide it. There will be a red background instead.
+         */
+}
+.file-container .file .file-caption-container .inline-editor-form > input[type='text']:focus {
+  outline: 0;
+}
+.file-container .file .file-caption-container .inline-editor-form > input[type='text']:not(:focus) {
+  background: rgba(255, 0, 0, 0.15);
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.file-container .file .file-caption-container .inline-editor-form > input[type='text']::-ms-clear {
+  display: none;
+}
+.file-container .file .file-caption-container .rb-icon-edit {
+  vertical-align: middle;
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+}
+/****************************************************************************
+ * Screenshots
+ ****************************************************************************/
+.screenshot-caption {
+  background-color: #F6F6F6;
+  border: 1px #999999 solid;
+  border-top: 1px #CCCCCC solid;
+  padding: 2px 8px;
+  -moz-border-radius: 0 0 6px 6px;
+  -webkit-border-radius: 0 0 6px 6px;
+  border-radius: 0 0 6px 6px;
+}
+.screenshot-caption img {
+  vertical-align: bottom;
+}
+.screenshot-container {
+  background: white;
+  float: left;
+  display: inline;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  max-width: 400px;
+  min-width: 130px;
+  text-align: center;
+  vertical-align: middle;
+  position: relative;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+}
+.screenshot-container:hover {
+  background-color: #F6F6F6;
+}
+.screenshot-container:hover .screenshot-caption {
+  background-color: #E6E6E6;
+}
+.screenshot-container a {
+  color: black;
+  text-decoration: none;
+}
+.screenshot-container .image {
+  border: 1px #999999 solid;
+  border-bottom: 0;
+  cursor: pointer;
+  height: 100px;
+  line-height: 100px;
+  margin: 0 auto;
+  vertical-align: bottom;
+  -moz-border-radius: 6px 6px 0 0;
+  -webkit-border-radius: 6px 6px 0 0;
+  border-radius: 6px 6px 0 0;
+}
+.screenshot-container .image img {
+  vertical-align: middle;
+  -moz-border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+}
+/****************************************************************************
+ * Screenshot Thumbnails
+ ****************************************************************************/
+#screenshot-thumbnails {
+  margin: 2px;
+  padding: 0.5em;
+}
+#screenshot-thumbnails.dragover {
+  border: 2px green dashed;
+  display: block;
+  margin: 0;
+}
+/****************************************************************************
+ * List of Attached Files
+ ****************************************************************************/
+#file-list {
+  margin: 0;
+  padding: 0;
+  /*
+   * When hovering over a thumbnail, fade out all the other thumbnails, to both
+   * provide focus to the thumbnail the user is hovering over, and to help
+   * separate out the actions menu from other thumbnail contents.
+   */
+}
+#file-list.dragover {
+  border: 2px green dashed;
+  display: block;
+  margin: 0;
+}
+#file-list .file.faded {
+  opacity: 0.5;
+}
+#file-list h1.drop-indicator {
+  clear: both;
+  text-align: center;
+}
+/****************************************************************************
+ * Comment detail dialog
+ ****************************************************************************/
+.comment-dlg {
+  border: 1px #467d11 solid;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  cursor: default;
+  margin-top: 8px;
+  overflow: hidden;
+  position: absolute;
+}
+.comment-dlg form {
+  background-color: #ACEB6F;
+  display: block;
+  padding: 6px;
+}
+.comment-dlg form .buttons {
+  margin: 0;
+}
+.comment-dlg form .buttons input[type="button"] {
+  margin-right: 3px;
+}
+.comment-dlg h1 {
+  background: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+.comment-dlg img.ui-resizable-grip {
+  /* Use -1 for bottom and right so it overlaps the resize borders. */
+  bottom: -1px;
+  cursor: se-resize;
+  padding: 0.5em;
+  position: absolute;
+  right: -1px;
+  z-index: 20;
+}
+.comment-dlg .comment-dlg-body,
+.comment-dlg .comment-dlg-footer,
+.comment-dlg .comment-dlg-header {
+  position: relative;
+}
+.comment-dlg .comment-dlg-footer {
+  padding: 6px 0 0 0;
+}
+.comment-dlg .comment-dlg-footer .status {
+  display: none;
+  font-style: italic;
+  margin-bottom: 6px;
+}
+.comment-dlg .comment-dlg-header {
+  padding: 0 0 6px 0;
+  line-height: 16px;
+}
+.comment-dlg .comment-dlg-header .markdown-info {
+  line-height: inherit;
+}
+.comment-dlg .comment-dlg-options {
+  list-style: none;
+  margin: 0;
+  padding: 6px 0 0 0;
+}
+.comment-dlg .comment-dlg-options li {
+  margin: 3px 0;
+  padding: 0;
+}
+.comment-dlg .comment-dlg-options li:first-child {
+  margin-top: 0;
+}
+.comment-dlg .comment-dlg-options li:last-child {
+  margin-bottom: 0;
+}
+.comment-dlg .markdown-info {
+  line-height: 16px;
+}
+.comment-dlg .other-comments {
+  background-color: #A1C0E3;
+  border-right: 1px #467d11 solid;
+  padding: 6px;
+}
+.comment-dlg .other-comments ul {
+  background-color: white;
+  border: 1px #333333 solid;
+  list-style: none;
+  margin: 6px 0 0 0;
+  overflow: auto;
+  padding: 0;
+  position: relative;
+}
+.comment-dlg .other-comments ul li {
+  padding: 6px;
+}
+.comment-dlg .other-comments ul li.even {
+  background-color: #F3F3F3;
+}
+.comment-dlg .other-comments ul li h2 {
+  font-size: 90%;
+  margin: 0 0 6px 0;
+  padding: 0;
+}
+.comment-dlg .other-comments ul li h2 .actions {
+  font-weight: normal;
+  right: 6px;
+}
+.comment-dlg .other-comments ul li h2 .actions a {
+  color: blue;
+  cursor: pointer;
+  text-decoration: none;
+  margin-left: 6px;
+  padding: 3px;
+}
+.comment-dlg .other-comments ul li h2 .actions a:hover {
+  background-color: #F6F6F6;
+}
+.comment-dlg .other-comments ul li pre {
+  white-space: pre-wrap;
+  /* CSS 3 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, 1999+ */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* IE 5.5+ */
+  font-size: 90%;
+}
+.comment-dlg .text-editor {
+  border: 1px #b8b5a0 solid;
+  margin: 0;
+}
+.comment-dlg .text-editor .CodeMirror,
+.comment-dlg .text-editor textarea {
+  border: 0;
+}
+.comment-dlg .ui-icon-gripsmall-diagonal-se {
+  background: url("../../images/resize-grip.b822a7e06419.png") no-repeat top left;
+}
+.issue-state {
+  font-weight: bold;
+  line-height: 26px;
+  margin-bottom: 2em;
+  min-height: 26px;
+  padding: 0.6em;
+  -webkit-transition: 0.1s linear all;
+  -moz-transition: 0.1s linear all;
+  transition: 0.1s linear all;
+}
+.issue-state input,
+.issue-state .back-to-issue-summary {
+  /*
+     * This keeps a consistency with the browser. By default, Chrome uses
+     * a margin of 2px, and changing it to 0 actually makes things look
+     * off-center.
+     */
+  margin: 2px 2px 2px 0.2em;
+  vertical-align: middle;
+}
+.issue-state .issue-container {
+  position: relative;
+}
+.issue-state .rb-icon {
+  margin: 0 0.2em;
+}
+.issue-state.dropped {
+  background: #ECECEC;
+  border: 1px #b9b9b9 solid;
+}
+.issue-state.dropped .back-to-issue-summary,
+.issue-state.dropped .back-to-issue-summary:visited {
+  color: #535353;
+}
+.issue-state.open {
+  background: #fff4B0;
+  border: 1px #e3c300 solid;
+}
+.issue-state.open .back-to-issue-summary,
+.issue-state.open .back-to-issue-summary:visited {
+  color: #7d6c00;
+}
+.issue-state.resolved {
+  background: #FAFAFA;
+  border: 1px #e1e1e1 solid;
+}
+.issue-state.resolved .back-to-issue-summary,
+.issue-state.resolved .back-to-issue-summary:visited {
+  color: #616161;
+}
+.issue-state .back-to-issue-summary {
+  font-size: 13px;
+  font-weight: normal;
+  text-decoration: none;
+  padding: 0 0.5em;
+  position: absolute;
+  right: 0;
+  height: 24px;
+  line-height: 24px;
+}
+.issue-state .back-to-issue-summary:hover {
+  text-decoration: underline;
+}
+.issue-state .issue-message {
+  margin-right: 0.5em;
+  vertical-align: middle;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .issue-state .back-to-issue-summary {
+    display: none;
+  }
+  .issue-state .issue-actions {
+    display: block;
+    margin-top: 0.5em;
+  }
+  .issue-state .issue-actions input:first-child {
+    margin-left: 0;
+  }
+  .issue-state .issue-details {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+  }
+}
+/****************************************************************************
+ * Banners
+ ****************************************************************************/
+#discard-banner,
+#submitted-banner {
+  background: #E0E0E0;
+  border: 1px #808080 solid;
+}
+#draft-banner,
+#discard-banner,
+#submitted-banner {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  margin-top: -1.5em;
+  margin-left: -1.5em;
+  margin-right: -1.5em;
+  margin-bottom: 1.5em;
+  padding: 1.5em;
+}
+#draft-banner .interdiff-link,
+#discard-banner .interdiff-link,
+#submitted-banner .interdiff-link {
+  margin-top: 1em;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #draft-banner .banner-actions,
+  #discard-banner .banner-actions,
+  #submitted-banner .banner-actions {
+    margin-bottom: 2em;
+  }
+}
+#draft-banner p label,
+#discard-banner p label,
+#submitted-banner p label {
+  display: block;
+  line-height: 16px;
+  vertical-align: top;
+  padding-top: 1em;
+}
+#draft-banner > p,
+#discard-banner > p,
+#submitted-banner > p {
+  margin: 1em 0 0 0;
+}
+#review-banner {
+  padding-bottom: 4em;
+}
+#review-banner .banner {
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 90;
+  -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+}
+/****************************************************************************
+ * Tooltips
+ ****************************************************************************/
+.tooltip {
+  background-color: #fef6b3;
+  border: 1px #a58600 solid;
+  padding: 4px;
+  position: absolute;
+  max-width: 60em;
+}
+.tooltip.comments {
+  border: 1px black solid;
+  border-bottom: 0;
+  padding: 0;
+}
+.tooltip.comments > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tooltip.comments > ul > li {
+  background-color: #a1c0e3;
+  border-bottom: 1px #5170b3 solid;
+  margin: 0;
+  padding: 5px;
+}
+.tooltip.comments > ul > li.draft {
+  background-color: #aceb6f;
+  border-bottom: 1px black solid;
+}
+.tooltip.comments > ul > li div.reviewer {
+  font-weight: bold;
+}
+.tooltip.comments > ul > li pre {
+  white-space: pre-wrap;
+  /* CSS 3 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, 1999+ */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* IE 5.5+ */
+  font-size: 8pt;
+  margin: 0;
+  padding: 0;
+}
+/****************************************************************************
+ * Bubbles
+ ****************************************************************************/
+.bubble {
+  background-color: white;
+  border: 1px black solid;
+  font-size: 10pt;
+  font-weight: bold;
+  padding: 6px;
+  position: absolute;
+  white-space: nowrap;
+  z-index: 120;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+}
+/****************************************************************************
+ * Issue Summary
+ ****************************************************************************/
+.issue-table-wrapper {
+  clear: both;
+}
+#issue-summary-table {
+  border: 1px #999 solid;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  border-spacing: 0;
+  overflow: hidden;
+  width: 100%;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #issue-summary-table {
+    border: 1px #A89C00 solid;
+  }
+}
+#issue-summary-table tr td {
+  border-top: 1px transparent solid;
+  cursor: pointer;
+  padding: 7px;
+  vertical-align: middle;
+}
+#issue-summary-table tr td a {
+  color: #0000CC;
+  text-decoration: none;
+}
+#issue-summary-table tr td .rb-icon {
+  margin-right: 2px;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #issue-summary-table tr td {
+    display: block;
+  }
+}
+#issue-summary-table tr.hidden {
+  display: none;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #issue-summary-table thead {
+    display: none !important;
+  }
+}
+#issue-summary-table thead th {
+  background: #E9E9E9;
+  border-bottom: 1px #BBB solid;
+  cursor: pointer;
+  height: 21px;
+  padding: 2px 8px;
+  text-align: left;
+  white-space: nowrap;
+}
+#issue-summary-table thead th:hover {
+  background: #dcdcdc;
+}
+#issue-summary-table .issue {
+  /*
+     * Sets the background and hover colors for an issue row of a given type.
+     */
+  /* Add borders separating groups of different types of statuses. */
+}
+#issue-summary-table .issue:not(.hidden).open + .issue:not(.open) td,
+#issue-summary-table .issue:not(.hidden).dropped + .issue:not(.dropped) td,
+#issue-summary-table .issue:not(.hidden).resolved + .issue:not(.resolved) td {
+  border-top-color: #CCC;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #issue-summary-table .issue:not(.hidden).open + .issue:not(.open) td,
+  #issue-summary-table .issue:not(.hidden).dropped + .issue:not(.dropped) td,
+  #issue-summary-table .issue:not(.hidden).resolved + .issue:not(.resolved) td {
+    border-top-color: transparent;
+  }
+}
+#issue-summary-table .issue .issue-text {
+  vertical-align: middle;
+}
+#issue-summary-table .issue .summary-table-description {
+  line-height: 16px;
+  overflow: hidden;
+  vertical-align: top;
+  width: 100%;
+}
+#issue-summary-table .issue.open:hover td {
+  background-color: #f2e48a;
+}
+#issue-summary-table .issue.open td {
+  background-color: #fff4B0;
+}
+#issue-summary-table .issue.dropped:hover td {
+  background-color: #dfdfdf;
+}
+#issue-summary-table .issue.dropped td {
+  background-color: #ECECEC;
+}
+#issue-summary-table .issue.resolved:hover td {
+  background-color: #ededed;
+}
+#issue-summary-table .issue.resolved td {
+  background-color: #FAFAFA;
+}
+#issue-summary-table .issue .reviewer {
+  padding: 0 7px;
+}
+#issue-summary-table .issue .reviewer a {
+  padding: 7px 0;
+}
+#issue-summary-table .issue .last-updated {
+  padding: 7px;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #issue-summary-table .issue {
+    /*
+       * Add a border betwen all sections, but don't add it to the very top.
+       * This sort of selector will guarantee all visible rows following the
+       * first visible row will have a top border set.
+       */
+  }
+  #issue-summary-table .issue:not(.hidden) ~ .issue:not(.hidden) td:first-child {
+    border-top-color: #CCC;
+  }
+  #issue-summary-table .issue td.summary-table-description,
+  #issue-summary-table .issue td.reviewer,
+  #issue-summary-table .issue td.last-updated {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  #issue-summary-table .issue td.summary-table-description {
+    padding-top: 1em;
+  }
+  #issue-summary-table .issue td.last-updated {
+    padding-bottom: 1em;
+  }
+  #issue-summary-table .issue .issue-icon {
+    margin: 0 4px;
+  }
+  #issue-summary-table .issue .last-updated time {
+    /* Align the text. */
+    margin-left: 28px;
+  }
+  #issue-summary-table .issue .status,
+  #issue-summary-table .issue .summary-table-description {
+    width: auto;
+  }
+}
+#issue-summary-table .no-issues td {
+  background-color: #FFF;
+}
+#issue-summary-table .comment-id,
+#issue-summary-table .last-updated,
+#issue-summary-table .reviewer,
+#issue-summary-table .status {
+  vertical-align: middle;
+  white-space: nowrap;
+}
+#issue-summary-table .comment-id img,
+#issue-summary-table .last-updated img,
+#issue-summary-table .reviewer img,
+#issue-summary-table .status img {
+  vertical-align: middle;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #issue-summary-table .comment-id,
+  #issue-summary-table .last-updated,
+  #issue-summary-table .reviewer,
+  #issue-summary-table .status {
+    white-space: normal;
+  }
+}
+#issue-summary .issue-summary-header {
+  margin: 1.5em 0 -1px 0;
+  padding-bottom: 0;
+  position: relative;
+}
+#issue-summary .issue-summary-header .issue-summary-tabs {
+  list-style: none;
+  margin: 0 0 0 2.5em;
+  padding: 0;
+}
+#issue-summary .issue-summary-header .issue-summary-tabs .issue-summary-tab {
+  border: 1px transparent solid;
+  border-bottom: 0;
+  -moz-border-radius: 6px 6px 0 0;
+  -webkit-border-radius: 6px 6px 0 0;
+  border-radius: 6px 6px 0 0;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 0.5em 1px 0;
+  padding: 0.5em 1em;
+  vertical-align: bottom;
+}
+#issue-summary .issue-summary-header .issue-summary-tabs .issue-summary-tab * {
+  cursor: pointer;
+  vertical-align: middle;
+}
+#issue-summary .issue-summary-header .issue-summary-tabs .issue-summary-tab:hover {
+  background: #f6f6f6;
+  border-color: #a6a6a6;
+}
+#issue-summary .issue-summary-header .issue-summary-tabs .issue-summary-tab.active {
+  background: #E9E9E9;
+  border-color: #999;
+  /*
+           * Make the tab flush with the top border of the issue table,
+           * along with the -1px margin-bottom in .issue-summary-header.
+           */
+  margin-bottom: 0px;
+}
+#issue-summary .issue-summary-header .issue-summary-tabs .issue-summary-tab.active label,
+#issue-summary .issue-summary-header .issue-summary-tabs .issue-summary-tab.active span {
+  /*
+             * Compensate for the 1px vertical difference in content
+             * between the active and inactive tabs.
+             */
+  padding-bottom: 1px;
+}
+#issue-summary .issue-summary-header .issue-summary-tabs .issue-summary-tab.issue-summary-total label,
+#issue-summary .issue-summary-header .issue-summary-tabs .issue-summary-tab.issue-summary-total span {
+  display: inline-block;
+}
+#issue-summary .issue-summary-header .issue-summary-tabs .issue-summary-tab label {
+  color: black;
+  font-weight: normal;
+  margin-right: 3px;
+  line-height: 16px;
+}
+#issue-summary .issue-summary-header .issue-summary-tabs .issue-summary-tab .issue-counter-value {
+  vertical-align: middle;
+}
+#issue-summary .issue-summary-header .issue-summary-filters {
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  margin-bottom: 1em;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #issue-summary .issue-summary-header .issue-summary-filters {
+    position: initial;
+    text-align: right;
+  }
+}
+#issue-summary .issue-summary-header .issue-summary-filters .issue-summary-filter-wrapper {
+  display: inline;
+  margin: 0 0.5em;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #issue-summary .issue-summary-header .issue-summary-filters .issue-summary-filter-wrapper {
+    display: block;
+    margin: 1em 0.5em;
+  }
+}
+#issue-summary .issue-summary-header .issue-summary-filters .issue-summary-filter-wrapper:first-child {
+  margin-left: 0;
+}
+#issue-summary .issue-summary-header .issue-summary-filters .issue-summary-filter-wrapper select {
+  margin-left: 0.2em;
+}
+/****************************************************************************
+ * Rich text
+ ****************************************************************************/
+.rich-text {
+  line-height: 15px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.rich-text * {
+  margin: 0;
+  padding: 0;
+  line-height: inherit;
+  text-rendering: inherit;
+  white-space: normal;
+}
+.rich-text * br {
+  display: block;
+}
+.rich-text h1,
+.rich-text h2,
+.rich-text h3,
+.rich-text h4,
+.rich-text h5,
+.rich-text h6 {
+  font-size: 100%;
+}
+.rich-text p {
+  white-space: inherit;
+  /* Don't show both the <br> and the blank line. */
+}
+.rich-text p br {
+  display: none;
+}
+.rich-text ul,
+.rich-text ol {
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+}
+.rich-text ul p,
+.rich-text ol p {
+  /*
+       * <p> tags in a list do not preserve whitespace, since there's
+       * mandatory leading whitespace before the content.
+       */
+}
+.rich-text ul p br,
+.rich-text ol p br {
+  display: block;
+}
+.rich-text ul ul,
+.rich-text ol ul,
+.rich-text ul ol,
+.rich-text ol ol {
+  margin-left: 2ch;
+}
+.rich-text ol {
+  /*
+     * We want to keep wrapped text within the confines of the list item. So:
+     *
+     * 1. This is long text that
+     *    wraps like this.
+     *
+     * Instead of:
+     *
+     * 1. This is long text that
+     * wraps like this.
+     *
+     * To do this, we need to use display: table and display: table-cell.
+     * However, that loses item counter rendering, so we have to do counters
+     * ourselves. In combination with StyledOListBlockProcessor in
+     * reviewboard/reviews/markdown_extensions.py, this maintains compatibility
+     * with the start= attribute.
+     */
+  counter-reset: li;
+  display: table;
+  list-style-position: inside;
+}
+.rich-text ol > li {
+  counter-increment: li;
+  display: table;
+}
+.rich-text ol > li::before {
+  content: counter(li) ". ";
+  padding-right: 1ch;
+  display: table-cell;
+  text-align: right;
+}
+.rich-text ul {
+  list-style-position: outside;
+  list-style: disc;
+  margin-left: 2ch;
+}
+.rich-text li {
+  line-height: 15px;
+}
+.rich-text li ~ li:last-child p:last-child {
+  margin-bottom: 0;
+}
+.rich-text li p {
+  margin-bottom: 15px;
+  /*
+       * If the list item ends up with a sole <p>, just remove the margins.
+       * Depending on neighboring elements, Python Markdown will sometimes
+       * create list items this way.
+       */
+}
+.rich-text li p:first-child:last-child {
+  margin: 0;
+}
+.rich-text table th,
+.rich-text table td {
+  border-bottom: 1px solid #bbb;
+  padding: 0.2em 1em;
+}
+.rich-text code {
+  color: #4444cc;
+}
+.rich-text pre {
+  white-space: pre-wrap;
+  /* CSS 3 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, 1999+ */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* IE 5.5+ */
+  font-size: inherit;
+  margin-left: 2.5em;
+}
+.rich-text pre * {
+  white-space: pre-wrap;
+  /* CSS 3 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, 1999+ */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* IE 5.5+ */
+}
+.rich-text blockquote {
+  border-left: 1px solid #bbb;
+  padding-left: 1em;
+  margin-left: 0.5em;
+}
+.rich-text hr {
+  border: 1px solid #ddd;
+}
+/****************************************************************************
+ * "Update Diff" dialog
+ ****************************************************************************/
+.update-diff {
+  width: 60em;
+  height: 16em;
+}
+.update-diff #error-contents,
+.update-diff #parent-diff-error-contents {
+  margin: 0 5em;
+}
+.update-diff .input {
+  height: 16em;
+  line-height: 16em;
+  margin: 2em 2em 6em 2em;
+  border: 1px solid #D0D0D0;
+}
+.update-diff #prompt-for-basedir,
+.update-diff #prompt-for-diff,
+.update-diff #prompt-for-parent-diff,
+.update-diff #prompt-for-change-number,
+.update-diff #processing-diff,
+.update-diff #uploading-diffs,
+.update-diff #error-indicator {
+  display: none;
+}
+.update-diff #processing-diff .spinner,
+.update-diff #uploading-diffs .spinner {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  margin: auto;
+}
+.update-diff #error-contents,
+.update-diff #parent-diff-error-contents {
+  line-height: 12pt;
+  margin-bottom: 1em;
+  position: relative;
+}
+.update-diff #error-contents img,
+.update-diff #parent-diff-error-contents img {
+  margin-right: 5px;
+  vertical-align: sub;
+}
+.update-diff .input {
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  background-color: #ffffff;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+}
+.update-diff .input .startover {
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+  line-height: 14pt;
+}
+.update-diff .drag-hover {
+  border: 1px solid #c6c6c6;
+  -moz-box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.15);
+}

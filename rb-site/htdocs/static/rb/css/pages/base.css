@@ -1,0 +1,839 @@
+/*
+ * A mixin to help animate an element when going in or out of mobile
+ * sidebar mode.
+ */
+body {
+  background-color: #F9F9F9;
+  color: black;
+  font-family: Verdana, Arial, Helvetica, Sans-Serif;
+  font-size: 11px;
+  margin: 0;
+  padding: 0;
+  /*
+   * Set the page to not scroll and have all content take up the maximum
+   * height.
+   */
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  body.mobile-menu-open {
+    /*
+       * When opening the mobile sidebar menu, lock the viewport so the user
+       * can't scroll, and shift everything on the page over by the menu's
+       * width. This will animate them, using the transitions set on the
+       * elements.
+       */
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+  body.mobile-menu-open #container,
+  body.mobile-menu-open #mobile_menu_mask,
+  body.mobile-menu-open #mobile_navbar_container {
+    -webkit-transform: translate(300px, 0);
+    -moz-transform: translate(300px, 0);
+    transform: translate(300px, 0);
+  }
+}
+body.full-page-content {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+body.full-page-content #content_container,
+body.full-page-content #content {
+  height: 100%;
+  margin-bottom: 0;
+  vertical-align: top;
+}
+h1 {
+  font-size: 10pt;
+}
+h3 {
+  margin-top: 2em;
+}
+img {
+  border: 0;
+}
+pre,
+textarea,
+.CodeMirror,
+.editable.field-text-area {
+  font-size: 13px;
+  font-family: monospace;
+  line-height: 15px;
+}
+textarea {
+  resize: none;
+}
+/*
+ * The account and support menu drop-down region of the header bar.
+ */
+#accountnav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+  float: right;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #accountnav {
+    display: none;
+  }
+}
+#accountnav li {
+  border: 1px transparent solid;
+  border-top: 0;
+  display: block;
+  float: right;
+  margin: -5px 0;
+  padding: 0;
+  position: relative;
+  white-space: nowrap;
+}
+#accountnav li:hover {
+  border-color: #888;
+}
+#accountnav li:hover ul {
+  border: 1px #888 solid;
+  display: block;
+  margin-right: -1px;
+  z-index: 110;
+}
+#accountnav li:hover ul li {
+  border: 0;
+}
+#accountnav li a {
+  color: inherit;
+  display: block;
+  font-size: 110%;
+  margin: 0;
+  padding: 0 1em;
+  text-decoration: none;
+  height: 32px;
+  vertical-align: middle;
+  line-height: 32px;
+}
+#accountnav li a.user-nav-item {
+  padding-left: 0.2em;
+}
+#accountnav li img {
+  display: inline;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+}
+#accountnav li ul {
+  display: none;
+  margin: 0;
+  min-width: 9em;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  -moz-border-radius: 0 0 6px 6px;
+  -webkit-border-radius: 0 0 6px 6px;
+  border-radius: 0 0 6px 6px;
+}
+#accountnav li ul li {
+  float: none;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+#accountnav li ul li:last-child {
+  -moz-border-radius: 0 0 6px 6px;
+  -webkit-border-radius: 0 0 6px 6px;
+  border-radius: 0 0 6px 6px;
+}
+#accountnav li ul li a {
+  margin: 0;
+}
+/*
+ * The "Loading..." indicator shown during AJAX operations.
+ */
+#activity-indicator {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 0;
+  text-align: center;
+  font-weight: bold;
+  background-color: #fce94f;
+  border: 1px #c4a000 solid;
+  border-top: 0;
+  width: 8em;
+  margin-left: -4em;
+  padding: 0.5em 0.5em;
+  z-index: 140;
+}
+#activity-indicator span {
+  vertical-align: middle;
+  line-height: 16px;
+}
+#activity-indicator .fa-spinner {
+  font-size: 16px;
+}
+#activity-indicator.error {
+  background-color: #ffcd9c;
+  width: 28em;
+  margin-left: -14em;
+  background-image: none;
+  padding-left: 0.6em;
+}
+#activity-indicator.error a {
+  margin-left: 1em;
+  color: #0000CC;
+  text-decoration: none;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #container {
+    position: relative;
+    -webkit-transition: 0.3s -webkit-transform ease-out;
+    -moz-transition: 0.3s -moz-transform ease-out, 0.3s transform ease-out;
+    transition: 0.3s -webkit-transform ease-out, 0.3s -moz-transform ease-out, 0.3s transform ease-out;
+  }
+}
+#content_container {
+  position: relative;
+}
+/*
+ * The error information shown when an AJAX operation fails.
+ */
+#error div {
+  background: #ffcd9c;
+  border: 1px #9a4306 solid;
+  margin-bottom: 10px;
+  padding: 8px 10px;
+}
+#error h1 {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+#error input[type='submit'] {
+  margin-left: 10px;
+}
+/*
+ * The header bar at the top of the page. This contains the branding,
+ * search field, and the accountnav element.
+ *
+ * This has the following children:
+ *
+ *    * #rbinfo
+ *    * #accountnav
+ *    * #search
+ */
+#headerbar {
+  margin: 0;
+  padding: 5px;
+  height: 22px;
+  vertical-align: middle;
+  z-index: 50;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #headerbar {
+    border-bottom: 1px solid;
+    height: auto;
+    position: relative;
+    text-align: center;
+    -webkit-transition: 0.3s -webkit-transform ease-out;
+    -moz-transition: 0.3s -moz-transform ease-out, 0.3s transform ease-out;
+    transition: 0.3s -webkit-transform ease-out, 0.3s -moz-transform ease-out, 0.3s transform ease-out;
+  }
+}
+#headerbar br {
+  clear: both;
+  height: 0;
+}
+#headerbar #logo {
+  position: absolute;
+  top: 3px;
+  left: 8px;
+  z-index: 50;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #headerbar #logo {
+    position: relative;
+    top: 0;
+    height: 32px;
+    width: 32px;
+    z-index: 50;
+  }
+}
+#headerbar #nav_toggle {
+  color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 8px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  display: none;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #headerbar #nav_toggle {
+    display: block;
+  }
+}
+#headerbar #nav_toggle .fa {
+  vertical-align: middle;
+}
+#headerbar #title {
+  color: inherit;
+  display: inline;
+  font-weight: normal;
+  font-size: 125%;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #headerbar #title {
+    margin-left: 0.5em;
+  }
+}
+#headerbar #title a {
+  color: inherit;
+  font-size: 120%;
+  text-decoration: none;
+}
+#headerbar #title .version {
+  font-weight: normal;
+  font-size: 90%;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #headerbar #title .version {
+    display: none;
+  }
+}
+#headerbar #search {
+  float: right;
+  margin: 0 1em;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #headerbar #search {
+    float: none;
+    margin: 0.5em 0.5em 0 0.5em;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
+#headerbar #search input {
+  border: 1px #CCC solid;
+  margin: 0;
+  padding: 2px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  background-color: #EEEEEE;
+  font-size: 1.2em;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #headerbar #search input {
+    /*
+         * Style the search input to appear more like the saerch bars on
+         * most mobile apps and sites, giving more breathing room.
+         */
+    background-color: white;
+    padding: 4px 8px;
+    margin: 0;
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
+/*
+ * The branding section of the headerbar, containing the logo and versioning
+ * information.
+ */
+#rbinfo {
+  float: left;
+  position: absolute;
+  left: 0;
+  padding-top: 0.2em;
+  padding-left: 76px;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #rbinfo {
+    /*
+     * Reset positioning and floating so that on mobile, this will take the
+     * full width of the page.
+     */
+    float: none;
+    position: relative;
+    padding: 0;
+  }
+}
+#rbinfo img {
+  display: inline;
+  vertical-align: middle;
+}
+/*
+ * The mobile navbar section containing the username, Log In/Out, Register,
+ * and My Account links.
+ */
+#mobile_account_menu {
+  background: rgba(0, 0, 0, 0.8);
+  color: #EEE;
+  border-bottom: 1px rgba(0, 0, 0, 0.3) solid;
+  font-size: 120%;
+  height: 32px;
+  overflow: hidden;
+  padding: 0;
+  white-space: nowrap;
+  vertical-align: middle;
+  display: none;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #mobile_account_menu {
+    display: block;
+  }
+}
+#mobile_account_menu img {
+  display: inline-block;
+  vertical-align: middle;
+}
+#mobile_account_menu ul {
+  float: right;
+  font-size: 10px;
+  line-height: inherit;
+  list-style: none;
+  margin: 4px 8px 0 0;
+  padding: 0;
+  white-space: nowrap;
+}
+#mobile_account_menu ul li {
+  display: inline-block;
+  margin: 0 0 0 2em;
+  padding: 4px 0;
+  text-align: center;
+}
+#mobile_account_menu ul li a {
+  color: inherit;
+}
+#mobile_account_menu ul li span {
+  line-height: inherit;
+}
+#mobile_account_menu ul li .fa {
+  font-size: 18px;
+  vertical-align: middle;
+}
+#mobile_account_menu .username {
+  vertical-align: middle;
+}
+/*
+ * The footer of the mobile menu, containing Docs, Support, and possibly
+ * Admin links.
+ */
+#mobile_account_menu_footer {
+  background: #2d2e38;
+  border-top: 1px #21232a solid;
+  font-size: 0;
+  height: 40px;
+  list-style: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+}
+#mobile_account_menu_footer.has-admin li {
+  /*
+     * If there's an admin link, we need to give each item a third of the
+     * width of the page.
+     */
+  width: 33%;
+}
+#mobile_account_menu_footer li {
+  display: inline-block;
+  font-size: 12px;
+  text-align: center;
+  /*
+     * By default, we have two links, so give each half of the width
+     * of the page.
+     */
+  width: 50%;
+}
+#mobile_account_menu_footer li a {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 1em;
+  width: 100%;
+}
+/*
+ * An event mask overlaying the content of the page. It's shown only when
+ * the mobile menu is shown. There is nothing visible, allowing the page
+ * content to fully show through.
+ */
+#mobile_menu_mask {
+  -moz-box-shadow: -1px 0 8px 4px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: -1px 0 8px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: -1px 0 8px 4px rgba(0, 0, 0, 0.4);
+  display: none;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 199;
+  -webkit-transition: 0.3s -webkit-transform ease-out;
+  -moz-transition: 0.3s -moz-transform ease-out, 0.3s transform ease-out;
+  transition: 0.3s -webkit-transform ease-out, 0.3s -moz-transform ease-out, 0.3s transform ease-out;
+}
+/*
+ * The container for the entire mobile menu.
+ *
+ * This takes up the entire height of the page, but a fixed width, designed
+ * to take up most but not all of the screen on a typical mobile phone.
+ */
+#mobile_navbar_container {
+  background-color: #383A46;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #EEE;
+  border: 0;
+  border-right: 1px #0b0b0d solid;
+  position: absolute;
+  top: 0;
+  left: -300px;
+  height: 100%;
+  width: 300px;
+  display: none;
+  -webkit-transition: 0.3s -webkit-transform ease-out;
+  -moz-transition: 0.3s -moz-transform ease-out, 0.3s transform ease-out;
+  transition: 0.3s -webkit-transform ease-out, 0.3s -moz-transform ease-out, 0.3s transform ease-out;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #mobile_navbar_container {
+    display: block;
+  }
+}
+#mobile_navbar_container a {
+  color: inherit;
+  text-decoration: none;
+}
+/*
+ * The main set of navigation links in the mobile navigation menu.
+ *
+ * This is designed around the structure of the datagrid sidebar, for
+ * compatibilty. It's a fairly general design.
+ *
+ * Each item in the navigation list is in an <li>. It may optionally be
+ * within a <span class="label"> within that, and may also have a
+ * <span class="rb-icon"> and/or <span class="count">.
+ *
+ * The links can be grouped into sections by using <li class="section">.
+ * Each section must have a <h3> with the section name, and a <ul> containing
+ * other links.
+ */
+#mobile_page_nav {
+  list-style: none;
+  margin: 0;
+  overflow-y: auto;
+  padding: 0;
+  position: absolute;
+  top: 32px;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  /* Section headers */
+}
+#mobile_page_nav .section h3 {
+  -moz-box-shadow: inset 0 0 8px 4px rbga(0, 0, 0, 0.8);
+  -webkit-box-shadow: inset 0 0 8px 4px rbga(0, 0, 0, 0.8);
+  box-shadow: inset 0 0 8px 4px rbga(0, 0, 0, 0.8);
+  background: #2d2e38;
+  border-top: 1px #21232a solid;
+  border-bottom: 1px #21232a solid;
+  font-size: 120%;
+  font-weight: normal;
+  margin: 0;
+  padding: 0.5em;
+  text-transform: uppercase;
+}
+#mobile_page_nav li {
+  line-height: 20px;
+  margin: 0;
+  padding: 1em;
+  position: relative;
+  text-shadow: 0 0 2px black;
+}
+#mobile_page_nav li.has-count .label {
+  margin-right: 4em;
+}
+#mobile_page_nav li.section {
+  padding: 0;
+}
+#mobile_page_nav li.section:not(:first-child) {
+  margin-top: 1.5em;
+}
+#mobile_page_nav li.section h3.label {
+  margin-left: 0;
+}
+#mobile_page_nav li a {
+  color: #EEE;
+}
+#mobile_page_nav li .count {
+  color: #BBB;
+  font-size: 95%;
+  padding-left: 8px;
+  position: absolute;
+  right: 1.5em;
+}
+#mobile_page_nav li .rb-icon {
+  position: absolute;
+  left: 0.8em;
+  vertical-align: middle;
+}
+#mobile_page_nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/*
+ * The container for the desktop navigation bar. This is not shown when in
+ * mobile mode.
+ */
+#navbar-container a {
+  font-size: 110%;
+  text-decoration: none;
+}
+/*
+ * The navigation bar.
+ *
+ * This is the bar showing such items as "My Dashboard"< "New Review Request",
+ * etc.
+ */
+#navbar {
+  border-bottom: 1px solid;
+  list-style: none;
+  margin: 0;
+  min-height: 1.5em;
+  padding: 5px;
+  padding-left: 76px;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #navbar {
+    display: none;
+    padding-left: 10px;
+    margin-top: 10px;
+  }
+}
+#navbar li {
+  display: inline;
+  height: 30px;
+  margin: 0 1em 0 0;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #navbar li {
+    display: block;
+  }
+}
+#navbar .newreviewrequest {
+  text-align: right;
+}
+/*
+ * The main container for the page's content.
+ */
+#page-container {
+  padding: 0 1.5em 1.5em 1.5em;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #page-container {
+    position: relative;
+    -webkit-transition: 0.3s -webkit-transform ease-out;
+    -moz-transition: 0.3s -moz-transform ease-out, 0.3s transform ease-out;
+    transition: 0.3s -webkit-transform ease-out, 0.3s -moz-transform ease-out, 0.3s transform ease-out;
+  }
+}
+#topbar {
+  margin: 0 0 1.5em 0;
+}
+/*
+ * The box containing information on an AJAX error.
+ */
+.server-error-box .response-data {
+  margin-top: 2em;
+}
+/****************************************************************************
+ * Page themes
+ ****************************************************************************/
+/*
+ * Default color scheme, used for the dashboard, My Account page, and others
+ * featuring largely blue-ish colors.
+ */
+#accountnav li:hover {
+  background: #ffffff;
+  border-color: #adadad;
+}
+#accountnav li:hover ul {
+  border-color: #a0a0a0;
+}
+#accountnav li:hover ul li:hover {
+  background: #ffffff;
+}
+#accountnav li:hover ul li.menu-info-box,
+#accountnav li:hover ul li.menu-info-box:hover {
+  /*
+             * These are currently only used in RBCommons, but may be useful
+             * for future accountnav features.
+             */
+  background: #f4f9ff;
+  border-bottom: 1px #c1ddff solid;
+  padding: 1em;
+}
+#accountnav li:hover ul li.menu-info-box,
+#accountnav li:hover ul li.menu-info-box:hover,
+#accountnav li:hover ul li.menu-info-box *,
+#accountnav li:hover ul li.menu-info-box:hover * {
+  cursor: default;
+}
+#accountnav li ul {
+  background: #DAEBFF;
+}
+#headerbar {
+  border-bottom-color: #a0a0a0;
+}
+#headerbar #nav_toggle {
+  color: rgba(0, 0, 0, 0.8);
+}
+#headerbar #search input {
+  border-color: #a0a0a0;
+}
+#navbar-container {
+  background: #DAEBFF;
+  border-color: #a0a0a0;
+}
+#navbar {
+  border-bottom-color: #a0a0a0;
+}
+#navbar a {
+  color: #2222BB;
+}
+#topbar {
+  background: #DAEBFF;
+  color: #000000;
+}
+#topbar .version {
+  color: #5A646E;
+}
+.admin #accountnav li:hover {
+  background: #e6e6e6;
+  border-color: #8c8c8c;
+}
+.admin #accountnav li:hover ul {
+  border-color: #808080;
+}
+.admin #accountnav li:hover ul li:hover {
+  background: #e6e6e6;
+}
+.admin #accountnav li:hover ul li.menu-info-box,
+.admin #accountnav li:hover ul li.menu-info-box:hover {
+  /*
+             * These are currently only used in RBCommons, but may be useful
+             * for future accountnav features.
+             */
+  background: #d9d9d9;
+  border-bottom: 1px #bfbfbf solid;
+  padding: 1em;
+}
+.admin #accountnav li:hover ul li.menu-info-box,
+.admin #accountnav li:hover ul li.menu-info-box:hover,
+.admin #accountnav li:hover ul li.menu-info-box *,
+.admin #accountnav li:hover ul li.menu-info-box:hover * {
+  cursor: default;
+}
+.admin #accountnav li ul {
+  background: #CCC;
+}
+.admin #headerbar {
+  border-bottom-color: #808080;
+}
+.admin #headerbar #nav_toggle {
+  color: rgba(0, 0, 0, 0.8);
+}
+.admin #headerbar #search input {
+  border-color: #808080;
+}
+.admin #navbar-container {
+  background: #CCC;
+  border-color: #808080;
+}
+.admin #navbar {
+  border-bottom-color: #808080;
+}
+.admin #navbar a {
+  color: #2222BB;
+}
+.admin #topbar {
+  background: #CCC;
+  color: #000000;
+}
+.admin #topbar .version {
+  color: #555;
+}
+.reviewable-page #accountnav li:hover {
+  background: #f7f1db;
+  border-color: #909090;
+}
+.reviewable-page #accountnav li:hover ul {
+  border-color: #838383;
+}
+.reviewable-page #accountnav li:hover ul li:hover {
+  background: #f7f1db;
+}
+.reviewable-page #accountnav li:hover ul li.menu-info-box,
+.reviewable-page #accountnav li:hover ul li.menu-info-box:hover {
+  /*
+             * These are currently only used in RBCommons, but may be useful
+             * for future accountnav features.
+             */
+  background: #f2e9c7;
+  border-bottom: 1px #e8d99d solid;
+  padding: 1em;
+}
+.reviewable-page #accountnav li:hover ul li.menu-info-box,
+.reviewable-page #accountnav li:hover ul li.menu-info-box:hover,
+.reviewable-page #accountnav li:hover ul li.menu-info-box *,
+.reviewable-page #accountnav li:hover ul li.menu-info-box:hover * {
+  cursor: default;
+}
+.reviewable-page #accountnav li ul {
+  background: #EDE1B2;
+}
+.reviewable-page #headerbar {
+  border-bottom-color: #838383;
+}
+.reviewable-page #headerbar #nav_toggle {
+  color: rgba(0, 0, 0, 0.8);
+}
+.reviewable-page #headerbar #search input {
+  border-color: #838383;
+}
+.reviewable-page #navbar-container {
+  background: #EDE1B2;
+  border-color: #838383;
+}
+.reviewable-page #navbar {
+  border-bottom-color: #838383;
+}
+.reviewable-page #navbar a {
+  color: #0700E8;
+}
+.reviewable-page #topbar {
+  background: #EDE1B2;
+  color: #000000;
+}
+.reviewable-page #topbar .version {
+  color: #584b15;
+}

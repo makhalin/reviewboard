@@ -1,0 +1,16 @@
+<IfModule mod_expires.c>
+  <FilesMatch "\.(jpg|gif|png|css|js|htc)">
+    ExpiresActive on
+    ExpiresDefault "access plus 1 year"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>

@@ -1,0 +1,179 @@
+/*
+ * Set the page to have a sidebar in desktop mode, with the content
+ * area moving to the right of the sidebar.
+ */
+body.has-sidebar #content {
+  margin-left: 19em;
+  -webkit-transition: 0.3s -webkit-transform ease-out;
+  -moz-transition: 0.3s -moz-transform ease-out, 0.3s transform ease-out;
+  transition: 0.3s -webkit-transform ease-out, 0.3s -moz-transform ease-out, 0.3s transform ease-out;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  body.has-sidebar #content {
+    margin-left: 0;
+  }
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  body.mobile-show-page-sidebar #content {
+    -webkit-transform: translate(120%);
+    -moz-transform: translate(120%);
+    transform: translate(120%);
+  }
+  body.mobile-show-page-sidebar #page-container #page_sidebar {
+    /*
+         * Show the sidebar by default on mobile. It'll be the first thing
+         * seen by the user, and the user will navigate from there.
+         */
+    display: block;
+    -webkit-transform: translate(0);
+    -moz-transform: translate(0);
+    transform: translate(0);
+  }
+}
+#page-container #page_sidebar {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  direction: rtl;
+  /* Position the scrollbar on the left. */
+  float: none;
+  padding: 1em 0;
+  position: absolute;
+  top: 0;
+  bottom: 1px;
+  margin: 3em -1px 0 1px;
+  width: 19em;
+  z-index: 20;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -webkit-transition: 0.3s -webkit-transform ease-out;
+  -moz-transition: 0.3s -moz-transform ease-out, 0.3s transform ease-out;
+  transition: 0.3s -webkit-transform ease-out, 0.3s -moz-transform ease-out, 0.3s transform ease-out;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #page-container #page_sidebar {
+    display: none;
+    -webkit-transform: translate(-120%);
+    -moz-transform: translate(-120%);
+    transform: translate(-120%);
+    direction: ltr;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+}
+#page-container #page_sidebar .page-sidebar-items {
+  direction: ltr;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#page-container #page_sidebar .page-sidebar-items li {
+  display: block;
+  list-style: none;
+  margin: 0;
+  text-align: left;
+  word-break: break-all;
+}
+#page-container #page_sidebar .page-sidebar-items li.has-url {
+  cursor: pointer;
+}
+#page-container #page_sidebar .page-sidebar-items li.active .page-sidebar-row,
+#page-container #page_sidebar .page-sidebar-items li.active.has-url:hover .page-sidebar-row {
+  background: #FFFFFF;
+  border: 1px #888A85 solid;
+  border-right: 1px transparent solid;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #page-container #page_sidebar .page-sidebar-items li.active .page-sidebar-row,
+  #page-container #page_sidebar .page-sidebar-items li.active.has-url:hover .page-sidebar-row {
+    border-right-color: #888A85;
+  }
+}
+#page-container #page_sidebar .page-sidebar-items li.has-url:hover .page-sidebar-row {
+  background: #ffffff;
+  border: 1px #d4d5d3 solid;
+  border-right: 1px #888A85 solid;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #page-container #page_sidebar .page-sidebar-items li.has-url:hover .page-sidebar-row {
+    border-right-color: #d4d5d3;
+  }
+}
+#page-container #page_sidebar .page-sidebar-items li.has-url:hover .page-sidebar-row,
+#page-container #page_sidebar .page-sidebar-items li.active .page-sidebar-row {
+  -moz-border-radius: 15px 0 0 15px;
+  -webkit-border-radius: 15px 0 0 15px;
+  border-radius: 15px 0 0 15px;
+  -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #page-container #page_sidebar .page-sidebar-items li.has-url:hover .page-sidebar-row,
+  #page-container #page_sidebar .page-sidebar-items li.active .page-sidebar-row {
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+  }
+}
+#page-container #page_sidebar .page-sidebar-items li.section {
+  margin: 0 0 1em 0;
+}
+#page-container #page_sidebar .page-sidebar-items li.section > .page-sidebar-row .label {
+  color: #444;
+  font-size: 110%;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+#page-container #page_sidebar .page-sidebar-items li a {
+  color: black;
+  text-decoration: none;
+  padding: 0;
+}
+#page-container #page_sidebar .page-sidebar-items li ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#page-container #page_sidebar .page-sidebar-items li ul li.has-count .label {
+  /* Give room for the counts. */
+  margin-right: 4em;
+}
+#page-container #page_sidebar .page-sidebar-items li ul li.new-subsection {
+  margin-top: 1em;
+}
+#page-container #page_sidebar .page-sidebar-items li ul li .label {
+  display: inline-block;
+  /* Give room for the icons. */
+  margin-left: 20px;
+}
+#page-container #page_sidebar .page-sidebar-items li ul li .rb-icon {
+  position: absolute;
+  top: 0.4em;
+  left: 0.8em;
+}
+#page-container #page_sidebar .page-sidebar-items li .count {
+  color: #A02222;
+  position: absolute;
+  top: 0.3em;
+  right: 1.6em;
+  font-size: 95%;
+  padding: 0px 8px;
+  margin-top: 0px;
+}
+#page-container #page_sidebar .page-sidebar-items li .count.count-zero {
+  color: #BBBBBB;
+}
+#page-container #page_sidebar .page-sidebar-items li .page-sidebar-row {
+  line-height: 20px;
+  padding: 0.4em 0.8em;
+  position: relative;
+  /* Match the border on the active row, to prevent content jumps. */
+  border: 1px transparent solid;
+}
+#page-container #page_sidebar .page-sidebar-items li .page-sidebar-row .rb-icon {
+  vertical-align: middle;
+}

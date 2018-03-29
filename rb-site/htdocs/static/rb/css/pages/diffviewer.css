@@ -1,0 +1,756 @@
+/*
+ * The .diff-changes-* rules are used only within JavaScript code to
+ * figure out the colors used to display the file complexity icons.
+ */
+.diff-changes-icon-insert {
+  color: #67d94b;
+}
+.diff-changes-icon-replace {
+  color: #c3c704;
+}
+.diff-changes-icon-delete {
+  color: #df677a;
+}
+.sidebyside {
+  background: white;
+  border-collapse: collapse;
+  padding: 2px;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: -1px;
+}
+.sidebyside.diff-error td {
+  background: #FFF6A6;
+  padding: 1em;
+}
+.sidebyside.diff-error td a {
+  color: blue;
+  font-weight: bold;
+}
+.sidebyside.diff-error td h2 {
+  font-size: 10pt;
+  margin: 0em 0 2em 0;
+  padding: 0;
+}
+.sidebyside.diff-error td h2 .rb-icon {
+  vertical-align: text-bottom;
+}
+.sidebyside.diff-error .error-details {
+  display: none;
+}
+.sidebyside.diff-error .error-details pre {
+  background: white;
+  border: 1px #999 solid;
+  padding: 1em;
+}
+.sidebyside.diff-error .revision-row th {
+  padding-left: 4em;
+}
+.sidebyside.newfile col.left {
+  width: 0%;
+}
+.sidebyside.newfile col.right {
+  width: 100%;
+}
+.sidebyside.newfile td .diff-collapse-btn {
+  right: 50%;
+}
+.sidebyside.selecting-col-1:not(.newfile) td.r,
+.sidebyside.selecting-col-1:not(.newfile) td.r * {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+  /* These must be defined as two rules, or Firefox will drop them both. */
+}
+.sidebyside.selecting-col-1:not(.newfile) td.r::selection,
+.sidebyside.selecting-col-1:not(.newfile) td.r *::selection {
+  background: transparent;
+}
+.sidebyside.selecting-col-1:not(.newfile) td.r::-moz-selection,
+.sidebyside.selecting-col-1:not(.newfile) td.r *::-moz-selection {
+  background: transparent;
+}
+.sidebyside.selecting-col-3 td.l,
+.sidebyside.selecting-col-3 td.l * {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+  /* These must be defined as two rules, or Firefox will drop them both. */
+}
+.sidebyside.selecting-col-3 td.l::selection,
+.sidebyside.selecting-col-3 td.l *::selection {
+  background: transparent;
+}
+.sidebyside.selecting-col-3 td.l::-moz-selection,
+.sidebyside.selecting-col-3 td.l *::-moz-selection {
+  background: transparent;
+}
+.sidebyside a {
+  color: black;
+  text-decoration: none;
+}
+.sidebyside col.left {
+  width: 50%;
+}
+.sidebyside col.right {
+  width: 50%;
+}
+.sidebyside col.line {
+  width: 1%;
+  /* Make sure this doesn't stretch if the header stretches. */
+}
+.sidebyside img.header-file-icon {
+  vertical-align: middle;
+}
+.sidebyside pre {
+  white-space: pre-wrap;
+  /* CSS 3 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, 1999+ */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* IE 5.5+ */
+  font-size: 8pt;
+  line-height: 140%;
+  margin: 0;
+  padding-left: 2px;
+}
+.sidebyside .indent {
+  color: #A3CCA3;
+}
+.sidebyside .unindent {
+  color: #CCA3A3;
+}
+.sidebyside .moved-row-start pre {
+  margin-top: 4px;
+}
+.sidebyside .moved-row th {
+  /* Compensate for the increased border. */
+  padding-right: 2px;
+}
+.sidebyside .moved-to {
+  border-left: 4px #a1c7ff solid !important;
+}
+.sidebyside .moved-to .moved-flag {
+  background-color: #a1c7ff !important;
+}
+.sidebyside .moved-from {
+  border-left: 4px #b0d0ff solid !important;
+}
+.sidebyside .moved-from .moved-flag {
+  background-color: #b0d0ff !important;
+}
+.sidebyside .moved-flag {
+  background-color: inherit !important;
+  display: inline-block;
+  font-size: 7pt;
+  margin: -1px;
+  padding: 0;
+}
+.sidebyside .moved-to-start .moved-flag,
+.sidebyside .moved-from-start .moved-flag {
+  padding: 3px 1em 3px 0.5em;
+  -moz-border-radius: 0 8px 8px 0;
+  -webkit-border-radius: 0 8px 8px 0;
+  border-radius: 0 8px 8px 0;
+}
+.sidebyside tbody tr.selected * {
+  background: #E2E2E2;
+}
+.sidebyside tbody tr.selected td .diff-collapse-btn {
+  background: #E4D9CB;
+}
+.sidebyside tbody tr.first td,
+.sidebyside tbody tr.first th {
+  border-top: 1px #D0D0D0 solid;
+}
+.sidebyside tbody tr.last td,
+.sidebyside tbody tr.last th {
+  border-bottom: 1px #D0D0D0 solid;
+}
+.sidebyside tbody tr.highlight-anchor td,
+.sidebyside tbody tr.highlight-anchor th {
+  background: #F3CBFF;
+}
+.sidebyside tbody tr td {
+  padding: 1px;
+  vertical-align: top;
+}
+.sidebyside tbody tr td .collapse-floater {
+  position: relative;
+}
+.sidebyside tbody tr td .diff-collapse-btn {
+  background: #E4D9CB;
+  border: 1px black solid;
+  padding: 5px;
+  cursor: pointer;
+  position: absolute;
+  right: -8px;
+  z-index: 100;
+  opacity: 0.8;
+  width: 14px;
+  height: 14px;
+}
+.sidebyside tbody tr td .diff-collapse-btn:hover {
+  opacity: 1.0;
+}
+.sidebyside tbody tr th {
+  color: #777777;
+  font-weight: normal;
+  background: #F0F0F0;
+  cursor: pointer;
+  padding-left: 1em;
+  padding-right: 4px;
+  text-align: right;
+  vertical-align: top;
+  /*
+         * The minimum width is calculated so that the th is always as wide as
+         * the expand by 20 lines button, which is 28px wide.
+         */
+  min-width: calc(23px);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+  /* These must be defined as two rules, or Firefox will drop them both. */
+}
+.sidebyside tbody tr th::selection {
+  background: transparent;
+}
+.sidebyside tbody tr th::-moz-selection {
+  background: transparent;
+}
+.sidebyside tbody tr.comment-divider td {
+  height: 1px;
+  padding: 0;
+  background-color: #666 !important;
+}
+.sidebyside tbody.whitespace-file td {
+  background: #fdfecc;
+  padding: 1em;
+}
+.sidebyside tbody.deleted td {
+  background: #ffe0e5;
+  padding: 1em;
+}
+.sidebyside tbody.new-empty-file td {
+  background: #dfffd7;
+  padding: 1em;
+}
+.sidebyside tbody.no-changes td {
+  padding: 1em;
+}
+.sidebyside tbody.binary .inline-actions-header {
+  background: #e8e8e8;
+  border-bottom: 1px #cacaca solid;
+}
+.sidebyside tbody.binary .inline-actions-header td {
+  padding: 0;
+}
+.sidebyside tbody.binary .inline-actions-header td:first-child {
+  border-right: 1px #D0D0D0 solid;
+}
+.sidebyside tbody.binary .inline-actions-right li,
+.sidebyside tbody.binary .inline-actions-left li {
+  -moz-border-radius: 0 0 0 0;
+  -webkit-border-radius: 0 0 0 0;
+  border-radius: 0 0 0 0;
+}
+.sidebyside tbody.binary .inline-actions-right li:hover,
+.sidebyside tbody.binary .inline-actions-left li:hover {
+  background-color: #dcdcdc;
+}
+.sidebyside tbody.binary .inline-actions-right {
+  float: right;
+}
+.sidebyside tbody.binary .inline-actions-right a {
+  border-left: 1px #cacaca solid;
+}
+.sidebyside tbody.binary .inline-actions-left {
+  float: left;
+}
+.sidebyside tbody.binary .inline-actions-left a {
+  border-right: 1px #cacaca solid;
+  border-left: 0px;
+}
+.sidebyside tbody.binary .inline-files-container td:first-child {
+  border-right: 1px #D0D0D0 solid;
+}
+.sidebyside tbody.binary .inline-files-container td.diff-review-ui {
+  padding: 0;
+}
+.sidebyside tbody.binary .file-thumbnail-container {
+  margin: 0;
+  overflow: hidden;
+  padding: 1em;
+  text-align: center;
+  white-space: nowrap;
+}
+.sidebyside tbody.binary p {
+  margin: 0;
+  padding: 4px;
+}
+.sidebyside tbody.binary td {
+  padding: 1em;
+}
+.sidebyside tbody.delete tr.selected * {
+  background: #f2c0c8;
+}
+.sidebyside tbody.delete tr.highlight-anchor * {
+  background: #F3CBFF;
+}
+.sidebyside tbody.delete tr td {
+  background: #ffe0e5;
+  border-color: #edcfd3;
+}
+.sidebyside tbody.delete tr th {
+  background: #f5d0d6;
+  border-color: #d6ccce;
+}
+.sidebyside tbody.insert tr.selected * {
+  background: #b9edac;
+}
+.sidebyside tbody.insert tr.highlight-anchor * {
+  background: #F3CBFF;
+}
+.sidebyside tbody.insert tr td {
+  background: #dfffd7;
+  border-color: #cfeac8;
+}
+.sidebyside tbody.insert tr th {
+  background: #caf2c1;
+  border-color: #bdd8b7;
+}
+.sidebyside tbody.replace tr.selected * {
+  background: #e9eb88;
+}
+.sidebyside tbody.replace tr.highlight-anchor * {
+  background: #F3CBFF;
+}
+.sidebyside tbody.replace tr td {
+  background: #fdfecc;
+  border-color: #e3e57f;
+}
+.sidebyside tbody.replace tr th {
+  background: #f1f2b4;
+  border-color: #d5d69d;
+}
+.sidebyside tbody.replace.dimmed {
+  background: #FFFFFF;
+}
+.sidebyside tbody.replace.dimmed .hl {
+  background: #FFFFFF;
+}
+.sidebyside tbody.replace.dimmed th {
+  background: #F0F0F0;
+}
+.sidebyside tbody.replace .hl {
+  background: #eff23d;
+}
+.sidebyside tbody.diff-header a {
+  text-decoration: none;
+  color: black;
+}
+.sidebyside tbody.diff-header code {
+  margin: 0 2px;
+}
+.sidebyside tbody.diff-header img {
+  vertical-align: middle;
+  padding: 1px;
+}
+.sidebyside tbody.diff-header td {
+  background: #e4d9cb;
+  font-size: x-small;
+  text-align: center;
+}
+.sidebyside tbody.diff-header th {
+  background: #e4d9cb;
+}
+.sidebyside tbody.diff-header tr:first-child {
+  border-top: 1px #d3c0a9 solid;
+}
+.sidebyside tbody.diff-header tr:last-child {
+  border-bottom: 1px #d3c0a9 solid;
+}
+.sidebyside thead th {
+  background: #F0F0F0;
+  font-size: 120%;
+  font-weight: bold;
+  text-align: left;
+  text-overflow: ellipsis;
+}
+.sidebyside thead .filename-row th {
+  overflow: hidden;
+  padding: 8px;
+  background-color: #F0F0F0;
+  background-repeat: no-repeat;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FFFFFF), color-stop(50%, #F0F0F0), to(#F0F0F0));
+  background-image: -webkit-linear-gradient(#FFFFFF, #F0F0F0 50%, #F0F0F0);
+  background-image: -moz-linear-gradient(top, #FFFFFF, #F0F0F0 50%, #F0F0F0);
+  background-image: -ms-linear-gradient(#FFFFFF, #F0F0F0 50%, #F0F0F0);
+  background-image: -o-linear-gradient(#FFFFFF, #F0F0F0 50%, #F0F0F0);
+  background-image: linear-gradient(#FFFFFF, #F0F0F0 50%, #F0F0F0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#F0F0F0', GradientType=0);
+}
+.sidebyside thead .revision-row th {
+  border-bottom: 1px #cacaca solid;
+  font-size: 100%;
+  font-weight: normal;
+  padding: 8px 0;
+}
+.sidebyside thead .revision-row th.revision-col {
+  overflow: hidden;
+}
+.sidebyside thead .revision-row th .rb-icon {
+  vertical-align: text-top;
+}
+.sidebyside thead th.controls,
+.sidebyside th.controls {
+  font-size: 100%;
+  font-weight: normal;
+  padding: 2px 0 2px 2px;
+  vertical-align: top;
+}
+.commentflag {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  height: 20px;
+  left: -0.7em;
+  margin-top: -0.3em;
+  position: absolute;
+  width: 1.6em;
+}
+.commentflag .commentflag-shadow {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  opacity: 0.1;
+  filter: alpha(opacity=10);
+  -moz-opacity: 0.1;
+  background-color: black;
+  border: 1px solid black;
+  bottom: 0;
+  left: 0.2em;
+  position: absolute;
+  right: 0;
+  top: 0.2em;
+  width: 100%;
+}
+.commentflag .commentflag-inner {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  opacity: 0.95;
+  filter: alpha(opacity=95);
+  -moz-opacity: 0.95;
+  background-color: #a1c0e3;
+  border: 1px solid #204a87;
+  bottom: 0.2em;
+  cursor: pointer;
+  font-size: 90%;
+  font-weight: normal;
+  left: 0;
+  line-height: 1.7em;
+  position: absolute;
+  right: 0.2em;
+  text-align: center;
+  top: 0;
+  vertical-align: top;
+  width: 100%;
+  z-index: 20;
+}
+.commentflag .commentflag-inner span {
+  background: transparent !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+  /* These must be defined as two rules, or Firefox will drop them both. */
+}
+.commentflag .commentflag-inner span::selection {
+  background: transparent;
+}
+.commentflag .commentflag-inner span::-moz-selection {
+  background: transparent;
+}
+.selected .commentflag .commentflag-inner {
+  background-color: #a1c0e3;
+}
+.selected .commentflag .commentflag-inner,
+.commentflag .commentflag-inner:hover {
+  background-color: #a5caf3;
+}
+.commentflag.draft .commentflag-inner {
+  background-color: #aceb6f;
+  border-color: #3e7b01;
+}
+.selected .commentflag.draft .commentflag-inner,
+.commentflag.draft .commentflag-inner:hover {
+  background-color: #b6f37c;
+}
+.ghost-commentflag {
+  cursor: pointer;
+  position: absolute;
+  left: 0.1em;
+  margin-top: -0.1em;
+  height: 21px;
+}
+.ghost-commentflag .commentflag-inner {
+  background-color: #eeeeec;
+  border-color: #888a85;
+}
+#diffs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  /* Allows highlight chunks to be absolute relative to this. */
+  position: relative;
+}
+#diffs div.index ol {
+  margin-bottom: 20px;
+  padding-left: 30px;
+}
+#diffs .diff-container {
+  margin-bottom: 1em;
+  position: relative;
+}
+#diffs .diff-container:last-child {
+  margin-bottom: 0;
+}
+#diffs .diff-box {
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  border: 1px #A0A0A0 solid;
+  overflow: hidden;
+  -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+}
+#diffs .diff-highlight {
+  background-color: rgba(0, 0, 255, 0.2);
+  display: block;
+  font-size: 0;
+  /* Prevents the 13px minimum height in IE6 */
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+#diff_index,
+.diff-index {
+  border: 1px #BBB solid;
+  margin: 1em 0;
+}
+#diff_index table,
+.diff-index table {
+  padding: 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+#diff_index table tr:first-child td,
+.diff-index table tr:first-child td {
+  border-top: 0;
+}
+#diff_index table td,
+.diff-index table td {
+  background: #FDFDFD;
+  padding: 0.6em;
+  margin: 0;
+  border-top: 1px #DDD solid;
+  vertical-align: top;
+}
+#diff_index table td.diff-chunks-cell,
+.diff-index table td.diff-chunks-cell {
+  color: #888;
+  text-align: right;
+  width: 70%;
+}
+#diff_index table td.diff-file-icon,
+.diff-index table td.diff-file-icon {
+  padding: 2px 0 0 2px;
+}
+#diff_index table td.diff-file-icon .rb-icon,
+.diff-index table td.diff-file-icon .rb-icon {
+  width: 20px;
+  height: 20px;
+}
+#diff_index table td.diff-file-icon .fa-spinner,
+.diff-index table td.diff-file-icon .fa-spinner {
+  font-size: 16px;
+  margin: 2px;
+}
+#diff_index table td.diff-file-info,
+.diff-index table td.diff-file-info {
+  padding-left: 0.3em;
+  white-space: nowrap;
+  width: 30%;
+}
+#diff_index table td.diff-file-info .diff-file-rename,
+.diff-index table td.diff-file-info .diff-file-rename {
+  color: #888;
+  display: block;
+  font-size: 90%;
+  font-style: italic;
+  padding: 1em 0 0 0;
+}
+#diff_index table td a,
+.diff-index table td a {
+  color: blue;
+  text-decoration: none;
+}
+#diff_index table td a:hover,
+.diff-index table td a:hover {
+  text-decoration: underline;
+}
+#diff_index table td a.dimmed,
+.diff-index table td a.dimmed {
+  color: #ABABAB;
+}
+#diff_index table td .diff-chunks,
+.diff-index table td .diff-chunks {
+  max-height: 2.5em;
+  overflow: hidden;
+  text-align: right;
+}
+#diff_index table td .diff-chunks a,
+.diff-index table td .diff-chunks a {
+  display: inline-block;
+  margin: 3px 2px 0 2px;
+  width: 8px;
+  height: 8px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+#diff_index table td .diff-chunks a.insert,
+.diff-index table td .diff-chunks a.insert {
+  background-color: #67d94b;
+}
+#diff_index table td .diff-chunks a.delete,
+.diff-index table td .diff-chunks a.delete {
+  background-color: #df677a;
+}
+#diff_index table td .diff-chunks a.replace,
+.diff-index table td .diff-chunks a.replace {
+  background-color: #c3c704;
+}
+/****************************************************************************
+ * Diff information
+ ****************************************************************************/
+#diff-details {
+  border-spacing: 8px;
+}
+#diff-details.loading #diff_index {
+  background: white;
+  font-size: 16px;
+  height: 16px;
+  padding: 10px;
+}
+#diff-details #diff_revision_label h1 {
+  color: #575012;
+  font-size: 120%;
+  margin: 0;
+  padding: 0;
+}
+#diff-details .main {
+  padding: 1em;
+}
+#diff-details .main h1,
+#diff-details .main p {
+  margin: 1em 0;
+  padding: 0;
+}
+.revision-selector-grabbed,
+.revision-selector-grabbed * {
+  /*
+   * XXX: We should be able in instantiate mixins with !important but for some
+   * reason it's not working for me.
+   */
+  cursor: grabbing !important;
+  cursor: -moz-grabbing !important;
+  cursor: -webkit-grabbing !important;
+}
+.revision-selector {
+  margin: 3em 1.5em;
+  position: relative;
+}
+.revision-selector .revision-selector-trough {
+  border-bottom: 1px solid black;
+}
+.revision-selector .revision-selector-tick {
+  position: absolute;
+  top: -8px;
+  height: 16px;
+  border-left: 1px solid black;
+}
+.revision-selector .revision-selector-label {
+  position: absolute;
+  top: -26px;
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+}
+.revision-selector .revision-selector-label.revision-selector-label-active {
+  cursor: pointer;
+}
+.revision-selector .revision-selector-handle {
+  position: absolute;
+  top: -9px;
+  z-index: 2;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+.revision-selector .revision-selector-range {
+  position: absolute;
+  background-color: grey;
+  top: -1px;
+  height: 4px;
+  z-index: 1;
+}
+/****************************************************************************
+ * Comments hint
+ ****************************************************************************/
+.comments-hint li.current {
+  font-weight: bold;
+}
+.comments-hint li:not(.current) {
+  color: #0000C0;
+  text-decoration: underline;
+  cursor: pointer;
+}
+/****************************************************************************
+ * Pagination
+ ****************************************************************************/
+.paginate-link,
+.paginate-current {
+  padding: 2px 4px;
+  border: 1px solid #DDDDDD;
+}
+.paginate-current {
+  background: #417690;
+  color: #f4f379;
+  font-weight: bold;
+}
+#pagination2 {
+  margin-top: 1em;
+}

@@ -1,0 +1,261 @@
+@import (reference) "../defs.less";
+@import (reference) "../mixins/upload-diff.less";
+
+
+@img_base: '../../images';
+@djblets_img_base: '../../../djblets/images';
+
+
+#page-container #page_sidebar.new-review-request-sidebar {
+  .repository-selector {
+    .search-icon-wrapper {
+      margin: 1em;
+      position: relative;
+      height: 22px;
+
+      .fa-search {
+        color: #999;
+        font-size: 1.2em;
+        position: absolute;
+        left: 4px;
+        top: 4px;
+      }
+
+      .repository-search {
+        border: 1px solid #999;
+        .border-radius(@box-border-radius);
+        .box-shadow(none);
+        .box-sizing(border-box);
+        padding: 2px 4px 4px 20px;
+        width: 100%;
+        height: 100%;
+        z-index: (@z-index-banner + 1);
+      }
+    }
+  }
+}
+
+#new-review-request {
+  @default-height: 55em;
+
+  display: none;
+  position: relative;
+  width: 100%;
+
+  .main {
+    height: @default-height;
+    .border-radius(@box-border-radius);
+    .box-sizing(border-box);
+    .scrollable-y();
+
+    .hint {
+      .border-radius(@box-border-radius);
+      position: relative;
+      top: 50%;
+      text-align: center;
+      vertical-align: middle;
+      width: 100%;
+    }
+  }
+
+  .new-review-request-container {
+    background-color: @new-review-request-bg;
+    border: 1px solid @box-border-color;
+    .border-radius(@box-border-radius);
+    .box-shadow(@box-shadow);
+    .box-sizing(border-box);
+    overflow: hidden;
+  }
+
+  .pre-commit {
+    .upload-diff-ui();
+
+    .tip {
+      margin: 2em 2em 1em 2em;
+      text-align: center;
+
+      a {
+        color: @link-color;
+        font-weight: bold;
+        text-decoration: none;
+      }
+    }
+
+    #prompt-for-parent-diff {
+      line-height: 6em;
+
+      form {
+        margin-top: 4em;
+      }
+    }
+
+    #error-contents,
+    #parent-diff-error-contents {
+      margin: 0 10em;
+    }
+
+    .input {
+      height: 14em;
+      line-height: 14em;
+      margin: 2em;
+      border: 2px dashed @grey;
+
+      .on-mobile-medium-screen-720({
+        height: 6em;
+        line-height: 6em;
+      });
+    }
+  }
+
+  .section-header {
+    background-color: @box-title-bg;
+    border-bottom: 1px @box-border-color solid;
+    padding: 0.5em;
+    font-size: 120%;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .show-repositories {
+    color: @mobile-back-forward-link-color;
+    display: block;
+    margin-bottom: 1em;
+    font-size: 120%;
+    text-decoration: none;
+
+    .mobile-only();
+  }
+
+  .branches {
+    border-top: 1px @box-border-color solid;
+    padding: 0;
+
+    span, select {
+      display: inline-block;
+      margin: 0.5em;
+      vertical-align: middle;
+    }
+  }
+
+  .commit {
+    border-bottom: 1px @datagrid-row-border-color solid;
+    position: relative;
+    padding: 1em;
+    cursor: pointer;
+
+    &.disabled {
+      color: #888;
+      cursor: default;
+    }
+
+    &.has-review-request {
+      .summary {
+        color: @new-review-request-summary-posted-color;
+      }
+    }
+
+    .commit-info {
+      color: @new-review-request-commit-info-color;
+
+      .author, .revision {
+        margin-right: 1em;
+      }
+
+      .author, .revision, .time {
+        display: inline-block;
+        margin-top: 0.5em;
+        white-space: nowrap;
+
+        .on-mobile-medium-screen-720({
+          display: block;
+          float: none;
+          margin-top: 0.8em;
+        });
+      }
+
+      .revision {
+        font-family: monospace;
+      }
+
+      .time {
+        float: right;
+
+        .on-mobile-medium-screen-720({
+          float: none;
+        });
+      }
+    }
+
+    .fa {
+      color: @new-review-request-commit-icon-color;
+      font-size: 1.2em;
+
+      &.fa-code-fork {
+        margin-left: 0;
+      }
+    }
+
+    .summary {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 0.6em;
+      overflow: hidden;
+      vertical-align: bottom;
+    }
+
+    .jump-to-commit {
+      color: @new-review-request-jump-to-commit-color;
+      margin: 0;
+      float: right;
+      font-size: 1.5em;
+    }
+
+    .progress {
+      display: none;
+      position: absolute;
+      width: 16px;
+      right: 1em;
+      height: 100%;
+      font-size: 16px;
+    }
+
+    &:nth-child(even) {
+      background-color: @datagrid-row-even-bg;
+    }
+
+    &:nth-child(odd) {
+      background-color: @datagrid-row-odd-bg;
+    }
+
+    &:hover {
+      background-color: darken(@datagrid-row-even-bg, 3%);
+    }
+  }
+
+  .post-commit {
+    border-bottom: 1px @grey solid;
+
+    .error {
+      background: #FFE9E9;
+      padding: 1em;
+      font-size: 110%;
+
+      a {
+        color: blue;
+      }
+
+      .error-text {
+        color: #CC0000;
+      }
+    }
+  }
+
+  .files-only {
+    margin: 14em;
+    text-align: center;
+
+    input {
+      margin-top: 2em;
+    }
+  }
+}

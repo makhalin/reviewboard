@@ -1,0 +1,617 @@
+/*
+ * Applies to the body tag, and prepares the page for a datagrid that can
+ * fit the contents of the page.
+ */
+body.datagrid-page #page-container {
+  /*
+     * Hide the datagrid content by default, so we can show it after all
+     * the layout has been computed.
+     */
+  display: none;
+}
+body.datagrid-page #page-container {
+  /*
+     * Wrap the actions, resetting back to left-to-right text (which was set to
+     * put the scrollbar on the left) and offsetting the right to prevent
+     * overlapping the datagrid border.
+     */
+  /*
+     * Give both the fixed header table and the (eventually) hidden headers
+     * row in the body table a matching background and border style.
+     */
+}
+body.datagrid-page #page-container #content table:after {
+  clear: both;
+}
+body.datagrid-page #page-container #content .datagrid td.bugs a {
+  text-decoration: underline;
+  color: #0000C0;
+  white-space: nowrap;
+}
+body.datagrid-page #page-container #content .datagrid-body-container {
+  background: #FFFFFF;
+  overflow-y: auto;
+}
+body.datagrid-page #page-container #content .datagrid-wrapper {
+  height: 100%;
+}
+body.datagrid-page #page-container #content .main {
+  padding: 0;
+}
+body.datagrid-page #page-container .datagrid tr {
+  background: #FFFFFF;
+}
+body.datagrid-page #page-container .datagrid tr.even {
+  background: #FBFBFB;
+}
+body.datagrid-page #page-container .datagrid tbody td,
+body.datagrid-page #page-container .datagrid tbody th {
+  border-bottom: 1px #F0F0F0 solid;
+  padding: 5px;
+}
+body.datagrid-page #page-container .datagrid tbody td:last-child,
+body.datagrid-page #page-container .datagrid tbody th:last-child {
+  border-right: 0 !important;
+}
+body.datagrid-page #page-container .datagrid tbody tr:first-child td,
+body.datagrid-page #page-container .datagrid tbody tr:first-child th {
+  border-top: 0 !important;
+}
+body.datagrid-page #page-container .datagrid tbody tr {
+  background: #FFFFFF;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  body.datagrid-page #page-container .datagrid tbody tr.even th {
+    background: #E3E3E3;
+  }
+  body.datagrid-page #page-container .datagrid tbody tr.odd th {
+    background: #EEE;
+  }
+  body.datagrid-page #page-container .datagrid tbody tr td,
+  body.datagrid-page #page-container .datagrid tbody tr th {
+    padding-top: 10px;
+    border-bottom-width: 2px;
+  }
+  body.datagrid-page #page-container .datagrid tbody tr th {
+    border-right: 1px #CCC solid;
+    border-bottom: 0;
+    font-weight: normal;
+    color: #444;
+    padding-left: 10px;
+  }
+  body.datagrid-page #page-container .datagrid tbody tr.mobile-only-row td,
+  body.datagrid-page #page-container .datagrid tbody tr.mobile-only-row th {
+    padding-top: 5px;
+  }
+}
+body.datagrid-page #page-container .datagrid-actions-container {
+  direction: ltr;
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 1px;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+body.datagrid-page #page-container .datagrid-actions-container .datagrid-actions {
+  background: #EEE;
+  border: 1px #888A85 solid;
+  border-right: 0;
+  -moz-border-radius: 5px 0 0 5px;
+  -webkit-border-radius: 5px 0 0 5px;
+  border-radius: 5px 0 0 5px;
+  -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #555;
+  position: absolute;
+  left: 1em;
+  top: 4em;
+  bottom: 3.8em;
+  padding: 2em 2em 0 0;
+  margin-right: 1px;
+  width: 18em;
+}
+body.datagrid-page #page-container .datagrid-actions-container .datagrid-actions a {
+  color: inherit;
+  font-size: 110%;
+  text-decoration: none;
+}
+body.datagrid-page #page-container .datagrid-actions-container .datagrid-actions h2 {
+  font-size: 130%;
+}
+body.datagrid-page #page-container .datagrid-actions-container .datagrid-actions ul {
+  list-style: none;
+  margin: 3em 1em 1em 1em;
+  padding: 0;
+  text-align: right;
+}
+body.datagrid-page #page-container .datagrid-actions-container .datagrid-actions ul li {
+  margin: 1em 0;
+  padding: 0;
+}
+body.datagrid-page #page-container .datagrid-actions-container .datagrid-actions .count {
+  margin: 0 0 2em 0;
+  text-align: center;
+}
+body.datagrid-page #page-container .datagrid-actions-container .datagrid-actions .datagrid-actions-content {
+  padding: 8px;
+  width: 18em;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body.datagrid-page #page-container .datagrid-head,
+body.datagrid-page #page-container .datagrid-body .datagrid-headers {
+  background: #D0E6FF;
+  border-bottom: 1px #888A85 solid;
+  -moz-border-radius: 6px 6px 0 0;
+  -webkit-border-radius: 6px 6px 0 0;
+  border-radius: 6px 6px 0 0;
+}
+body.datagrid-page #page-container .datagrid-headers {
+  border-collapse: collapse;
+  border-spacing: 0;
+  overflow: hidden;
+}
+body.datagrid-page #page-container .datagrid-header {
+  /* Add rounded corners to the top-left and top-right of the header. */
+}
+body.datagrid-page #page-container .datagrid-header:first-child {
+  border-top-left-radius: 6px;
+}
+body.datagrid-page #page-container .datagrid-header:last-child {
+  border-top-right-radius: 6px;
+}
+body.datagrid-page #page-container .datagrid-main {
+  border: 1px #888A85 solid;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: hidden;
+  z-index: 1;
+}
+body.datagrid-page #page-container .datagrid-menu {
+  /*
+       * Override the Edit Columns menu to only show a border on the left.
+       * The menu should be flush with the top, bottom, and right of the
+       * table.
+       */
+  border: 0;
+  border-left: 1px #888A85 solid;
+  margin-top: 1px;
+  /*
+       * Override the default style for the "checkboxes" to not show a border.
+       * The actual checkmarks will be indication enough.
+       *
+       * Note that we still retain a faint hover style, showing a light grey
+       * box where the checkbox is.
+       */
+}
+body.datagrid-page #page-container .datagrid-menu .datagrid-menu-checkbox {
+  border: 0;
+}
+body.datagrid-page #page-container .datagrid-title-tabs {
+  display: inline-block;
+  list-style: none;
+  /*
+       * Position the tabs immediately above the header, so that the active
+       * tab can sit directly on top of the border.
+       */
+  margin: 0.5em 0.5em 0 4em;
+  padding: 0;
+  position: relative;
+  vertical-align: bottom;
+  z-index: 20;
+}
+body.datagrid-page #page-container .datagrid-title-tabs .datagrid-tab {
+  background: white;
+  border: 1px #888A85 solid;
+  border-right-width: 0;
+  float: left;
+  padding: 0;
+  /*
+         * Position the bottom of the tab so it's sitting right on the header's
+         * border. We'll then turn off the border for the active tab below,
+         * so it's flush with the header.
+         */
+  margin: 0 0 -1px 0;
+}
+body.datagrid-page #page-container .datagrid-title-tabs .datagrid-tab:first-child {
+  border-top-left-radius: 6px;
+}
+body.datagrid-page #page-container .datagrid-title-tabs .datagrid-tab:last-child {
+  border-top-right-radius: 6px;
+  border-right-width: 1px;
+}
+body.datagrid-page #page-container .datagrid-title-tabs .datagrid-tab.active {
+  background: #D0E6FF;
+  border-bottom-color: transparent;
+}
+body.datagrid-page #page-container .datagrid-title-tabs .datagrid-tab a {
+  color: black;
+  display: inline-block;
+  font-size: 110%;
+  text-decoration: none;
+  padding: 0.8em 1em;
+}
+body.datagrid-page #page-container .datagrid-title-tabs .datagrid-showclosed,
+body.datagrid-page #page-container .datagrid-title-tabs .datagrid-showarchived {
+  padding: 2px 0 0 10px;
+}
+body.datagrid-page #page-container .datagrid-wrapper .datagrid-titlebox {
+  /* Turn off the default styles from Djblet's datagrid stylesheet. */
+  background: none;
+  border-bottom: 0;
+  /*
+         * Set the titlebox to be aligned properly with any content that
+         * comes immediately before it in .datagrid-main. This may be tabs,
+         * for instance.
+         */
+  display: inline-block;
+  margin: 1em 0.5em;
+  padding: 0;
+  vertical-align: middle;
+}
+body.datagrid-page #page-container .datagrid-wrapper .datagrid-titlebox .datagrid-title {
+  background: transparent;
+  border-bottom: 0;
+  color: #444;
+  text-transform: uppercase;
+}
+body.datagrid-page #page-container .datagrid-wrapper .datagrid-titlebox .datagrid-top-filters {
+  display: inline;
+}
+body.datagrid-page #page-container .datagrid-wrapper .datagrid-titlebox .datagrid-top-filters a {
+  text-decoration: none;
+}
+body.datagrid-page #page-container .datagrid-wrapper .datagrid-titlebox .datagrid-top-filters a:hover {
+  text-decoration: underline;
+}
+body.datagrid-page #page-container .datagrid-wrapper .datagrid-titlebox .datagrid-top-filters .datagrid-filters {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+body.datagrid-page #page-container .datagrid-wrapper .datagrid-titlebox .datagrid-top-filters .datagrid-filters-menu {
+  display: none;
+  border: 1px transparent solid;
+  border-bottom: 0;
+  color: #333;
+  font-size: 1.5em;
+  line-height: 32px;
+  position: relative;
+  text-align: center;
+  width: 32px;
+  height: 32px;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  body.datagrid-page #page-container .datagrid-wrapper .datagrid-titlebox .datagrid-top-filters .datagrid-filters-menu {
+    display: block;
+  }
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  body.datagrid-page #page-container .datagrid-wrapper .datagrid-titlebox .datagrid-top-filters {
+    position: absolute;
+    right: 0;
+    top: 4px;
+  }
+  body.datagrid-page #page-container .datagrid-wrapper .datagrid-titlebox .datagrid-top-filters:hover .datagrid-filters {
+    opacity: 1;
+    visibility: visible;
+  }
+  body.datagrid-page #page-container .datagrid-wrapper .datagrid-titlebox .datagrid-top-filters:hover .datagrid-filters-menu {
+    background: #FFFFE0;
+    border-color: #939300;
+    -moz-border-radius: 6px 6px 0 0;
+    -webkit-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+    -webkit-transition: 0.1s border-color linear, 0.1s background linear;
+    -moz-transition: 0.1s border-color linear, 0.1s background linear;
+    transition: 0.1s border-color linear, 0.1s background linear;
+    z-index: 111;
+  }
+  body.datagrid-page #page-container .datagrid-wrapper .datagrid-titlebox .datagrid-top-filters .datagrid-filters {
+    background: #FFFFE0;
+    border: 1px #939300 solid;
+    -moz-border-radius: 6px 0 6px 6px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 32px;
+    visibility: hidden;
+    z-index: 110;
+    -webkit-transition: 0.1s opacity linear;
+    -moz-transition: 0.1s opacity linear;
+    transition: 0.1s opacity linear;
+  }
+  body.datagrid-page #page-container .datagrid-wrapper .datagrid-titlebox .datagrid-top-filters .datagrid-filters li {
+    white-space: nowrap;
+  }
+  body.datagrid-page #page-container .datagrid-wrapper .datagrid-titlebox .datagrid-top-filters .datagrid-filters li a {
+    color: black;
+    display: block;
+    padding: 1em;
+  }
+  body.datagrid-page #page-container .datagrid-wrapper .datagrid-titlebox .datagrid-top-filters .datagrid-filters li a:hover {
+    text-decoration: none;
+  }
+}
+body.datagrid-page #page-container .datagrid-wrapper .paginator {
+  background: #EEE;
+  border-top: 1px #BBB solid;
+  -moz-border-radius: 0 0 6px 6px;
+  -webkit-border-radius: 0 0 6px 6px;
+  border-radius: 0 0 6px 6px;
+  padding: 0 0 0 1em;
+}
+body.datagrid-page #page-container .datagrid-wrapper .paginator a:hover {
+  background: none;
+  color: black;
+}
+body.datagrid-page #page-container .datagrid-wrapper .paginator a,
+body.datagrid-page #page-container .datagrid-wrapper .paginator span {
+  display: inline-block;
+}
+body.datagrid-page #page-container .datagrid-wrapper .paginator a,
+body.datagrid-page #page-container .datagrid-wrapper .paginator .current-page {
+  border: 0;
+  color: #999;
+  font-weight: bold;
+  padding: 0.7em;
+  min-width: 1em;
+  text-align: center;
+}
+body.datagrid-page #page-container .datagrid-wrapper .paginator .current-letter {
+  background: none;
+  border: 0;
+  padding: 0;
+}
+body.datagrid-page #page-container .datagrid-wrapper .paginator .current-letter,
+body.datagrid-page #page-container .datagrid-wrapper .paginator .current-page {
+  background: none;
+  color: black;
+}
+body.datagrid-page #page-container .datagrid-wrapper .paginator .current-page {
+  border-bottom: 3px #777 solid;
+}
+body.datagrid-page #page-container .datagrid-wrapper .paginator .page-count {
+  color: #666;
+  font-weight: normal;
+}
+/*
+ * Set some common styles for the datagrid header cells.
+ *
+ * Borders will be turned off by default and the background will match that
+ * of the header. When a header is being dragged, the left and right borders
+ * will turn on again, to help provide a guide as to boundaries of the
+ * column.
+ */
+#page-container .datagrid-header,
+.datagrid-header-drag.datagrid-header {
+  background: #D0E6FF;
+  border: 0;
+}
+.datagrid-header-drag.datagrid-header {
+  border: 1px #888A85 solid;
+  border-top: 0;
+  border-bottom: 0;
+  z-index: 20;
+}
+.edit-columns .fa-spinner {
+  font-size: 16px;
+  text-align: center;
+}
+/****************************************************************************
+ * Column-specific styles
+ ****************************************************************************/
+#page-container .datagrid .age1 {
+  background-color: #beedbc;
+  border: 1px #8bbd5c solid !important;
+  white-space: nowrap;
+}
+#page-container .datagrid .age1:hover {
+  background-color: #a1cb9f;
+}
+#page-container .datagrid tr.even .age1 {
+  background-color: #b4e3b2;
+}
+#page-container .datagrid .age2 {
+  background-color: #ddfa8e;
+  border: 1px #a3e266 solid !important;
+  white-space: nowrap;
+}
+#page-container .datagrid .age2:hover {
+  background-color: #bcd675;
+}
+#page-container .datagrid tr.even .age2 {
+  background-color: #d3f084;
+}
+#page-container .datagrid .age3 {
+  background-color: #fdf18c;
+  border: 1px #d8c158 solid !important;
+  white-space: nowrap;
+}
+#page-container .datagrid .age3:hover {
+  background-color: #d9ce74;
+}
+#page-container .datagrid tr.even .age3 {
+  background-color: #f3e782;
+}
+#page-container .datagrid .age4 {
+  background-color: #fed3a9;
+  border: 1px #d49659 solid !important;
+  white-space: nowrap;
+}
+#page-container .datagrid .age4:hover {
+  background-color: #dab38e;
+}
+#page-container .datagrid tr.even .age4 {
+  background-color: #f4c99f;
+}
+#page-container .datagrid .age5 {
+  background-color: #fbc4c4;
+  border: 1px #f89393 solid !important;
+  white-space: nowrap;
+}
+#page-container .datagrid .age5:hover {
+  background-color: #d69999;
+}
+#page-container .datagrid tr.even .age5 {
+  background-color: #f2b9b9;
+}
+#page-container .datagrid .diff-size-column {
+  font-size: 90%;
+}
+#page-container .datagrid .diff-size-column.delete {
+  color: darkred;
+}
+#page-container .datagrid .diff-size-column.insert {
+  color: darkgreen;
+}
+#page-container .datagrid .month {
+  background-color: #E9E9E9;
+}
+#page-container .datagrid .issue-count,
+#page-container .datagrid .shipit-count {
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.05em 0.8em;
+  white-space: nowrap;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+#page-container .datagrid .issue-count {
+  border: 1px #b09700 solid;
+  color: #205003;
+  background-color: #ffdf17;
+  background-repeat: no-repeat;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff4B0), color-stop(25%, #fff4B0), to(#ffdf17));
+  background-image: -webkit-linear-gradient(#fff4B0, #fff4B0 25%, #ffdf17);
+  background-image: -moz-linear-gradient(top, #fff4B0, #fff4B0 25%, #ffdf17);
+  background-image: -ms-linear-gradient(#fff4B0, #fff4B0 25%, #ffdf17);
+  background-image: -o-linear-gradient(#fff4B0, #fff4B0 25%, #ffdf17);
+  background-image: linear-gradient(#fff4B0, #fff4B0 25%, #ffdf17);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff4B0', endColorstr='#ffdf17', GradientType=0);
+}
+#page-container .datagrid .issue-count .issue-icon {
+  color: #7d6c00;
+  display: inline-block;
+  padding: 0 3px 0 1px;
+  text-align: center;
+}
+#page-container .datagrid .shipit-count {
+  background-image: url("../../images/shipit_bg.png");
+  background-position: top left;
+  background-repeat: repeat-x;
+  background-color: #6bc810;
+  border: 1px #478a06 solid;
+  color: #205003;
+}
+#page-container .datagrid .repository-column,
+#page-container .datagrid .submitter-column {
+  white-space: nowrap;
+}
+#page-container .datagrid .submitter-column {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+#page-container .datagrid .submitter-column img {
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+#page-container .datagrid .summary {
+  cursor: pointer;
+  position: relative;
+  /*
+     * The summary text.
+     *
+     * We're forcing this to be a block, and then setting overflow: hidden,
+     * which, along with the float: left in the label above, will cause the
+     * text to stay together and wrap as a cohesive block, without part of
+     * the text wrapping below the label.
+     *
+     * Yes, CSS is weird.
+     */
+}
+#page-container .datagrid .summary .no-summary {
+  color: #888;
+  font-style: italic;
+}
+#page-container .datagrid .summary label {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  display: inline;
+  float: left;
+  margin-right: 0.6em;
+  padding: 0 4px;
+  line-height: 1.4;
+}
+#page-container .datagrid .summary label.label-draft {
+  background: #AAE29B;
+  border: 1px #51b936 solid;
+  color: #005500;
+}
+#page-container .datagrid .summary label.label-submitted {
+  background: #FFFFD0;
+  border: 1px #b6b600 solid;
+  color: #777700;
+}
+#page-container .datagrid .summary label.label-discarded {
+  background: #DDDDDD;
+  border: 1px #9d9d9d solid;
+  color: #555555;
+}
+#page-container .datagrid .summary label.label-archived {
+  background: #FAFAFA;
+  border: 1px #bababa solid;
+  color: #555555;
+}
+#page-container .datagrid .summary label.label-muted {
+  background: #DDDDDD;
+  border: 1px #9d9d9d solid;
+  color: #555555;
+}
+#page-container .datagrid .summary span {
+  display: block;
+  overflow: hidden;
+  line-height: 1.5;
+}
+/****************************************************************************
+ * Styles for the User page
+ ****************************************************************************/
+.datagrid-sidebar-items #user_page_profile {
+  margin-bottom: 1em;
+}
+.datagrid-sidebar-items #user_page_profile .nickname {
+  font-size: 1.4em;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.datagrid-sidebar-items #user_page_profile .email,
+.datagrid-sidebar-items #user_page_profile .group {
+  color: #0000C0;
+}
+.datagrid-sidebar-items #user_page_profile .fn,
+.datagrid-sidebar-items #user_page_profile .email {
+  font-size: 1.2em;
+}
+.datagrid-sidebar-items #user_page_profile .logged-in {
+  margin-top: 1.5em;
+}

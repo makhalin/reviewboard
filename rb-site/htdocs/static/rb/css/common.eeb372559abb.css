@@ -1,0 +1,483 @@
+.loading img {
+  margin-right: 4px;
+  vertical-align: text-bottom;
+}
+.box .star {
+  cursor: pointer;
+}
+/****************************************************************************
+ * Modal Boxes
+ ****************************************************************************/
+.modalbox {
+  margin: 10px;
+}
+.modalbox .modalbox-contents {
+  margin: 10px;
+  position: relative;
+  /* Makes this the offsetParent for calculations. */
+}
+.modalbox .modalbox-buttons {
+  position: absolute;
+  margin: 10px;
+  text-align: right;
+  bottom: 0;
+  right: 0;
+}
+.modalbox .modalbox-buttons input {
+  margin-left: 10px;
+}
+/****************************************************************************
+ * Inline editor forms
+ ****************************************************************************/
+.editicon {
+  margin-left: 4px;
+}
+.editicon .rb-icon {
+  vertical-align: bottom;
+}
+.editable,
+.editicon {
+  line-height: 14px;
+}
+.inline-editor-form textarea,
+.text-editor textarea {
+  border: 1px #b8b5a0 solid;
+  margin: 0;
+  outline: none;
+  padding: 10px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /*
+     * This prevents extra spacing below a text area in different browsers.
+     * See http://stackoverflow.com/questions/7144843/extra-space-under-textarea-differs-along-browsers
+     */
+  vertical-align: top;
+}
+.inline-editor-form {
+  display: block;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+.inline-editor-form .buttons input[type='button'] {
+  margin-left: 6px;
+  margin-right: 0;
+}
+.inline-editor-form .buttons input[type='button']:first-child {
+  margin-left: 0;
+}
+.inline-editor-form input[type="text"] {
+  border: 1px #888a85 solid;
+  padding: 1px 2px;
+}
+.inline-editor-form input[type] + .buttons {
+  padding-left: 6px;
+}
+.inline-editor-form textarea {
+  margin-top: 5px;
+}
+.inline-editor-form textarea + .buttons,
+.inline-editor-form .text-editor + .buttons {
+  margin-top: 6px;
+  white-space: normal;
+}
+.inline-editor-form .enable-markdown {
+  margin-left: 1em;
+}
+.inline-editor-form .enable-markdown label {
+  color: black;
+  font-size: 8pt !important;
+  font-weight: normal;
+}
+.loading-indicator {
+  display: inline;
+}
+.text-editor {
+  margin: 10px 0 0 0;
+}
+.text-editor textarea,
+.text-editor .CodeMirror {
+  margin: 0;
+}
+/****************************************************************************
+ * Forms
+ ****************************************************************************/
+.formdlg tr {
+  padding-top: 4px;
+}
+.formdlg td.label {
+  white-space: nowrap;
+}
+.formdlg .error {
+  color: #DD0000;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding: 4px 8px;
+}
+.formdlg .errorlist {
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.formdlg .errorlist li {
+  display: list-item;
+  padding: 2px 4px;
+}
+.formdlg .spinner {
+  float: left;
+}
+.formdlg .spinner img {
+  vertical-align: top;
+}
+.formdlg .spinner h1 {
+  display: inline;
+  margin-left: 10px;
+}
+/****************************************************************************
+ * Account page
+ ****************************************************************************/
+.section {
+  margin-bottom: 20px;
+}
+.section .title {
+  background: #DDDDDD;
+  border: 1px black solid;
+  padding: 4px 8px;
+}
+.section .body {
+  margin-left: 20px;
+  padding: 10px;
+}
+#manual-updates {
+  padding-top: 1em;
+}
+#manual-updates .box-main {
+  padding: 1em;
+}
+#manual-updates .box-main h1,
+#manual-updates .box-main h2 {
+  margin-top: 2em;
+}
+#manual-updates p {
+  font-size: 9pt;
+}
+/****************************************************************************
+ * Login/Register pages
+ ****************************************************************************/
+#auth_container {
+  font-size: 120%;
+  margin: 7em 0 0 0;
+  text-align: center;
+}
+#auth_container input[type="text"],
+#auth_container input[type="password"],
+#auth_container input[type="email"] {
+  border: 1px #aaa solid;
+  font-size: inherit;
+  margin: 0;
+  padding: 0.5em;
+  width: 16em;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#auth_container .auth-button-container {
+  width: 16em;
+}
+#auth_container .auth-button-container input {
+  font-size: 120%;
+  margin: 0;
+  padding: 0.6em;
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#auth_container .auth-form-row {
+  clear: both;
+  margin: 1.5em 0;
+  padding-left: 12em;
+}
+#auth_container .auth-form-row.auth-field-row {
+  padding-left: 0;
+}
+#auth_container .auth-form-row.auth-field-row label {
+  float: left;
+  font-weight: normal;
+  padding: 0.5em 1em 0.5em 0.5em;
+  text-align: right;
+  width: 12em;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#auth_container .auth-form-row.auth-field-row .errorlist {
+  display: block;
+  margin: 0.5em 0 0 12em;
+  width: 16em;
+}
+#auth_container .auth-form-row.auth-field-row .errorlist li {
+  font-weight: normal;
+  font-size: 9pt;
+}
+#auth_container .auth-header {
+  margin: 0 0 1em 0;
+}
+#auth_container .auth-header h1 {
+  font-size: 120%;
+  margin: 1em 0;
+  padding: 0;
+}
+#auth_container .auth-header p {
+  color: #444;
+  margin: 1em 0;
+}
+#auth_container .auth-header .errorbox {
+  display: inline-block;
+  text-align: center;
+}
+#auth_container .auth-header .errorbox .errorlist {
+  text-align: left;
+}
+#auth_container .auth-section {
+  display: inline-block;
+  margin: 0 2em;
+  text-align: left;
+  vertical-align: top;
+}
+#auth_container .auth-section.main-auth-section {
+  margin-left: -10em;
+}
+#auth_container .errorlist {
+  margin: 0;
+  padding: 0;
+}
+#auth_container .errorlist li {
+  display: block;
+  font-weight: normal;
+  margin: 0 0 1em 0;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  #auth_container {
+    /* Waste less vertical space on mobile devices. */
+    margin-top: 3em;
+  }
+  #auth_container .auth-form-row {
+    /* Change the labels to appear above the fields and not to the side. */
+    padding-left: 0;
+  }
+  #auth_container .auth-form-row.auth-field-row label {
+    display: block;
+    float: none;
+    padding: 0.5em 0;
+    text-align: left;
+    width: auto;
+  }
+  #auth_container .auth-section.main-auth-section {
+    /* Reset the margin that was providing room for the side labels. */
+    margin-left: 0;
+  }
+}
+#auth_container #login_form .login-links {
+  margin-top: 2em;
+  text-align: center;
+}
+#auth_container #login_form .login-links p {
+  width: 16em;
+}
+#auth_container #login_form .login-links p a {
+  color: blue;
+  text-decoration: none;
+}
+#auth_container #register_form .register-captcha-row {
+  padding-left: 0;
+}
+#auth_container #register_form .register-captcha-row .register-captcha-container {
+  float: right;
+}
+/****************************************************************************
+ * Auto-complete widget
+ ****************************************************************************/
+.ui-autocomplete-results {
+  background: #ffffff;
+  border: 1px solid #808080;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  z-index: 110;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .ui-autocomplete-results.search-results {
+    /*
+       * On mobile, set the autoresults list to take up the entire size of
+       * the #page-container, overriding anything set by the widget.
+       */
+    left: 0 !important;
+    top: -1.5em !important;
+    width: 100% !important;
+    height: 100%;
+    border: 0;
+    overflow-y: auto;
+  }
+}
+.ui-autocomplete-results ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .ui-autocomplete-results ul {
+    max-height: none !important;
+  }
+}
+.ui-autocomplete-results ul li {
+  cursor: pointer;
+  margin: 0;
+  padding: 3px 6px;
+  position: relative;
+  white-space: nowrap;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .ui-autocomplete-results ul li {
+    /*
+         * Give each item a border and more padding to help define the click
+         * area (and to fit in with typical search results on mobile devices.
+         */
+    border-top: 1px #EEE solid;
+    margin: 0 1em;
+    padding: 1.5em;
+  }
+}
+.ui-autocomplete-results ul li span {
+  margin-left: 6px;
+  position: absolute;
+  right: 6px;
+}
+.ui-autocomplete-results .ui-autocomplete-over {
+  background: #71a5db;
+  color: #FFF;
+}
+.ui-autocomplete-footer {
+  background: #ECECEC;
+  border-top: 1px #C0C0C0 solid;
+  padding: 3px 6px;
+}
+/****************************************************************************
+ * User page hover
+ ****************************************************************************/
+#user_infobox .infobox-pic {
+  float: left;
+  width: 85px;
+  margin-right: 1em;
+}
+#user_infobox .infobox-text {
+  color: black;
+  float: left;
+  max-width: 200px;
+  word-wrap: break-word;
+}
+#user_infobox a {
+  text-decoration: none;
+}
+#user_infobox a:hover {
+  text-decoration: underline;
+}
+#user_infobox h2 a {
+  color: inherit;
+}
+#user_infobox .logged-in {
+  margin-top: 2em;
+}
+#user_infobox .logged-in,
+#user_infobox .joined {
+  font-size: 0.8em;
+}
+#user_infobox #infobox-text h2 {
+  margin-top: 0;
+  padding-top: 0;
+}
+#submitter {
+  position: relative;
+}
+/****************************************************************************
+ * Bug hover
+ ****************************************************************************/
+#bug_infobox {
+  max-width: 50em;
+  max-height: 25em;
+  overflow: hidden;
+}
+#bug_infobox .bug-infobox-text {
+  color: black;
+  float: left;
+  word-wrap: break-word;
+}
+#bug_infobox .bug-infobox-text h2 {
+  margin-top: 0;
+  padding-top: 0;
+}
+#user_infobox,
+#bug_infobox {
+  background: #F9F9F9;
+  border: 1px black solid;
+  display: block;
+  min-height: 12em;
+  padding: 1em;
+  position: absolute;
+  min-width: 40em;
+  z-index: 120;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: 0px 0px 4px #000;
+  -webkit-box-shadow: 0px 0px 4px #000;
+  box-shadow: 0px 0px 4px #000;
+}
+#user_infobox h2,
+#bug_infobox h2 {
+  font-size: 1.4em;
+  margin: 0 0 0.5em 0;
+  padding: 0;
+}
+#user_infobox p,
+#bug_infobox p {
+  font-size: 1.2em;
+  margin: 0.5em 0;
+  padding: 0;
+}
+/****************************************************************************
+ * New Review Request
+ ****************************************************************************/
+#id_basedir #id_diff_path,
+#id_parent_diff_path {
+  width: 100%;
+}
+/****************************************************************************
+ * clearfix hacks
+ ****************************************************************************/
+/*
+ * clearfix hack. See http://www.webtoolkit.info/css-clearfix.html
+ */
+.clearfix {
+  display: inline-block;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+html[xmlns] .clearfix {
+  display: block;
+}
+* html .clearfix {
+  height: 1%;
+}

@@ -1,0 +1,43 @@
+#custom_policy_editor {
+  margin: 0;
+  width: 65em;
+}
+#custom_policy_editor p {
+  font-size: 110%;
+  margin: 1em;
+}
+#custom_policy_editor .CodeMirror {
+  border-top: 1px #DDD solid;
+  border-bottom: 1px #DDD solid;
+}
+.config-forms-container .config-forms-page-content .config-site-api-tokens .config-api-token-note {
+  color: #888;
+}
+.config-forms-container .config-forms-page-content .config-site-api-tokens .config-api-token-note.empty {
+  color: #CCC;
+  font-style: italic;
+}
+.config-forms-container .config-forms-page-content .config-site-api-tokens .config-api-token-value {
+  font-family: monospace;
+  font-size: 120%;
+}
+.config-forms-container .config-forms-page-content .config-site-api-tokens .config-forms-list-action-label-policy-custom {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.config-forms-container .config-forms-page-content .config-site-api-tokens .config-forms-list-action-policy {
+  text-align: right;
+  width: 6.5em;
+}
+.config-forms-container .config-forms-page-content .config-site-api-tokens .generate-api-token {
+  background: white;
+}
+.config-forms-container .config-forms-page-content .config-site-api-tokens .generate-api-token a {
+  color: blue;
+  font-size: 90%;
+  text-decoration: none;
+}
+.config-forms-container .config-forms-page-content .config-site-api-tokens .rb-icon {
+  vertical-align: middle;
+}

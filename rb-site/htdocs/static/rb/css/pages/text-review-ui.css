@@ -1,0 +1,140 @@
+/****************************************************************************
+ * General text-based review styles
+ ****************************************************************************/
+.review-ui-box .text-review-ui {
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+}
+.review-ui-box .text-review-ui.text-review-ui-has-tabs .sidebyside thead th {
+  background: #F0F0F0;
+}
+.review-ui-box .text-review-ui .review-ui-header {
+  /*
+     * We set this instead of turning off the border to keep the gradient from
+     * stopping too soon on Chrome and Firefox.
+     */
+  border-bottom-color: transparent;
+  min-height: 0;
+}
+.review-ui-box .text-review-ui .review-ui-header .text-review-ui-views {
+  border-bottom: 1px #cacaca solid;
+}
+.review-ui-box .text-review-ui .review-ui-header .text-review-ui-views ul {
+  list-style: none;
+  margin: 0;
+  padding: 1em 0 0 5em;
+}
+.review-ui-box .text-review-ui .review-ui-header .text-review-ui-views ul li {
+  background: #f5f5f5;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0;
+  border: 1px #cacaca solid;
+  border-bottom: 0;
+  font-size: 110%;
+  font-weight: normal;
+  vertical-align: bottom;
+  -moz-border-radius: 6px 6px 0 0;
+  -webkit-border-radius: 6px 6px 0 0;
+  border-radius: 6px 6px 0 0;
+}
+.review-ui-box .text-review-ui .review-ui-header .text-review-ui-views ul li.active {
+  background: #fdfdfd;
+}
+.review-ui-box .text-review-ui .review-ui-header .text-review-ui-views ul li.active a {
+  padding: 6px 12px;
+}
+.review-ui-box .text-review-ui .review-ui-header .text-review-ui-views ul li a {
+  color: black;
+  display: block;
+  padding: 4px 12px;
+  text-decoration: none;
+}
+.review-ui-box .text-review-ui .text-review-ui-text-table,
+.review-ui-box .text-review-ui .text-review-ui-rendered-table {
+  -moz-border-radius: 0 0 5px 5px;
+  -webkit-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
+}
+.review-ui-box .text-review-ui .text-review-ui-text-table .revision-row th,
+.review-ui-box .text-review-ui .text-review-ui-rendered-table .revision-row th {
+  font-weight: bold;
+}
+.review-ui-box .text-review-ui .text-review-ui-text-table tbody:last-child tr:last-child td:last-child,
+.review-ui-box .text-review-ui .text-review-ui-rendered-table tbody:last-child tr:last-child td:last-child {
+  -moz-border-radius: 0 0 5px 0;
+  -webkit-border-radius: 0 0 5px 0;
+  border-radius: 0 0 5px 0;
+}
+.review-ui-box .text-review-ui .text-review-ui-text-table tbody:last-child tr:last-child th:first-child,
+.review-ui-box .text-review-ui .text-review-ui-rendered-table tbody:last-child tr:last-child th:first-child {
+  -moz-border-radius: 0 0 0 5px;
+  -webkit-border-radius: 0 0 0 5px;
+  border-radius: 0 0 0 5px;
+}
+.review-ui-box .text-review-ui .text-review-ui-text-table .filename-row,
+.review-ui-box .text-review-ui .text-review-ui-rendered-table .filename-row {
+  border-bottom: 1px #cacaca solid;
+}
+.review-ui-box .text-review-ui .review-ui-error {
+  text-align: center;
+  padding: 2em;
+}
+.review-ui-box .text-review-ui .sidebyside {
+  -moz-border-radius: 0 0 6px 6px;
+  -webkit-border-radius: 0 0 6px 6px;
+  border-radius: 0 0 6px 6px;
+  margin-bottom: 0;
+}
+.review-ui-box .text-review-ui .sidebyside thead th {
+  background: #FEFADF;
+}
+.text-review-ui-comment-thumbnail {
+  background: inherit;
+}
+.text-review-ui-comment-thumbnail td {
+  background: white;
+}
+.text-review-ui-comment-thumbnail td,
+.text-review-ui-comment-thumbnail th {
+  border-right: 1px #DDD solid;
+}
+.text-review-ui-comment-thumbnail td:first-child,
+.text-review-ui-comment-thumbnail th:first-child {
+  border-left: 1px #DDD solid;
+}
+.text-review-ui-comment-thumbnail tr:first-child td,
+.text-review-ui-comment-thumbnail tr:first-child th {
+  border-top: 1px #DDD solid;
+}
+.text-review-ui-comment-thumbnail tr:last-child td,
+.text-review-ui-comment-thumbnail tr:last-child th {
+  border-bottom: 1px #DDD solid;
+}
+#attachment_revision_selector,
+#revision_label {
+  padding-top: 4px;
+  padding-left: 12px;
+}
+/****************************************************************************
+ * Markdown-specific styles
+ ****************************************************************************/
+.markdown-review-ui td {
+  padding-left: 2px;
+}
+.markdown-review-ui td tbody * {
+  margin: 0;
+  padding: 0;
+}
+.markdown-review-ui td a {
+  color: blue;
+  text-decoration: underline;
+}
+.markdown-review-ui td h1 {
+  font-size: 2em;
+}
+.markdown-review-ui td ul,
+.markdown-review-ui td ol {
+  padding-left: 2em;
+}

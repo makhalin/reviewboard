@@ -1,0 +1,29 @@
+.banner {
+  background: #CDFF9C;
+  border: 1px #4d9c00 solid;
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  z-index: 90;
+}
+.banner > h1,
+.banner > p {
+  display: inline;
+  margin-right: 0.2em;
+  padding: 0;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .banner p {
+    display: block;
+    margin: 1em 0;
+  }
+}
+.banner .banner-actions {
+  margin-left: 1em;
+}
+@media screen and (max-width: 720px), screen and (max-device-width: 720px) and (orientation: landscape) {
+  .banner .banner-actions {
+    display: block;
+    margin-left: 0;
+    margin-top: 1em;
+  }
+}

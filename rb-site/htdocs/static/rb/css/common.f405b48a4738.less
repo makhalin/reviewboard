@@ -1,0 +1,587 @@
+@import (reference) "defs.less";
+
+
+.loading img {
+  margin-right: 4px;
+  vertical-align: text-bottom;
+}
+
+.box .star {
+  cursor: pointer;
+}
+
+
+/****************************************************************************
+ * Modal Boxes
+ ****************************************************************************/
+.modalbox {
+  margin: 10px;
+
+  .modalbox-contents {
+    margin: 10px;
+    position: relative; /* Makes this the offsetParent for calculations. */
+  }
+
+  .modalbox-buttons {
+    position: absolute;
+    margin: 10px;
+    text-align: right;
+    bottom: 0;
+    right: 0;
+
+    input {
+      margin-left: 10px;
+    }
+  }
+}
+
+/****************************************************************************
+ * Inline editor forms
+ ****************************************************************************/
+.editicon {
+  margin-left: @edit-icon-margin;
+
+  .rb-icon {
+    vertical-align: bottom;
+  }
+}
+
+.editable, .editicon {
+  line-height: 14px;
+}
+
+.inline-editor-form,
+.text-editor {
+  textarea {
+    border: 1px @textarea-border-color solid;
+    margin: 0;
+    outline: none;
+    padding: 10px;
+    .box-sizing(border-box);
+
+    /*
+     * This prevents extra spacing below a text area in different browsers.
+     * See http://stackoverflow.com/questions/7144843/extra-space-under-textarea-differs-along-browsers
+     */
+    vertical-align: top;
+  }
+}
+
+.inline-editor-form {
+  display: block;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+
+  .buttons input[type='button'] {
+    margin-left: 6px;
+    margin-right: 0;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  input[type="text"] {
+    border: 1px #888a85 solid;
+    padding: 1px 2px;
+  }
+
+  input[type] + .buttons {
+    padding-left: 6px;
+  }
+
+  textarea {
+    margin-top: 5px;
+  }
+
+  textarea + .buttons,
+  .text-editor + .buttons {
+    margin-top: 6px;
+    white-space: normal;
+  }
+
+  .enable-markdown {
+    margin-left: 1em;
+
+    label {
+      color: black;
+      font-size: 8pt !important;
+      font-weight: normal;
+    }
+  }
+}
+
+.loading-indicator {
+  display: inline;
+}
+
+.text-editor {
+  margin: @textarea-editor-margin;
+
+  textarea, .CodeMirror {
+    margin: 0;
+  }
+}
+
+
+/****************************************************************************
+ * Forms
+ ****************************************************************************/
+.formdlg {
+  tr {
+    padding-top: 4px;
+  }
+
+  td.label {
+    white-space: nowrap;
+  }
+
+  .error {
+    color: #DD0000;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding: 4px 8px;
+  }
+
+  .errorlist {
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: list-item;
+      padding: 2px 4px;
+    }
+  }
+
+  .spinner {
+    float: left;
+
+    img {
+      vertical-align: top;
+    }
+
+    h1 {
+      display: inline;
+      margin-left: 10px;
+    }
+  }
+}
+
+
+/****************************************************************************
+ * Account page
+ ****************************************************************************/
+.section {
+  margin-bottom: 20px;
+
+  .title {
+    background: #DDDDDD;
+    border: 1px black solid;
+    padding: 4px 8px;
+  }
+
+  .body {
+    margin-left: 20px;
+    padding: 10px;
+  }
+}
+
+#manual-updates {
+  padding-top: 1em;
+
+  .box-main {
+    padding: 1em;
+
+    h1, h2 {
+      margin-top: 2em;
+    }
+  }
+
+  p {
+    font-size: 9pt;
+  }
+}
+
+
+/****************************************************************************
+ * Login/Register pages
+ ****************************************************************************/
+@auth-section-margin: 2em;
+@auth-label-width: 12em;
+@auth-field-width: 16em;
+
+
+#auth_container {
+  font-size: 120%;
+  margin: 7em 0 0 0;
+  text-align: center;
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+    border: 1px #aaa solid;
+    font-size: inherit;
+    margin: 0;
+    padding: 0.5em;
+    width: @auth-field-width;
+    .border-radius(@box-border-radius);
+    .box-sizing(border-box);
+  }
+
+  .auth-button-container {
+    width: 16em;
+
+    input {
+      font-size: 120%;
+      margin: 0;
+      padding: 0.6em;
+      width: 100%;
+      .box-sizing(border-box);
+    }
+  }
+
+  .auth-form-row {
+    clear: both;
+    margin: 1.5em 0;
+    padding-left: @auth-label-width;
+
+    &.auth-field-row {
+      padding-left: 0;
+
+      label {
+        float: left;
+        font-weight: normal;
+        padding: 0.5em 1em 0.5em 0.5em;
+        text-align: right;
+        width: @auth-label-width;
+        .box-sizing(border-box);
+      }
+
+      .errorlist {
+        display: block;
+        margin: 0.5em 0 0 @auth-label-width;
+        width: @auth-field-width;
+
+        li {
+          font-weight: normal;
+          font-size: 9pt;
+        }
+      }
+    }
+  }
+
+  .auth-header {
+    margin: 0 0 1em 0;
+
+    h1 {
+      font-size: 120%;
+      margin: 1em 0;
+      padding: 0;
+    }
+
+    p {
+      color: #444;
+      margin: 1em 0;
+    }
+
+    .errorbox {
+      display: inline-block;
+      text-align: center;
+
+      .errorlist {
+        text-align: left;
+      }
+    }
+  }
+
+  .auth-section {
+    display: inline-block;
+    margin: 0 @auth-section-margin;
+    text-align: left;
+    vertical-align: top;
+
+    &.main-auth-section {
+      margin-left: (-@auth-label-width + @auth-section-margin);
+    }
+  }
+
+  .errorlist {
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: block;
+      font-weight: normal;
+      margin: 0 0 1em 0;;
+    }
+  }
+
+  .on-mobile-medium-screen-720({
+    /* Waste less vertical space on mobile devices. */
+    margin-top: 3em;
+
+    .auth-form-row {
+      /* Change the labels to appear above the fields and not to the side. */
+      padding-left: 0;
+
+      &.auth-field-row {
+        label {
+          display: block;
+          float: none;
+          padding: 0.5em 0;
+          text-align: left;
+          width: auto;
+        }
+      }
+    }
+
+    .auth-section {
+      &.main-auth-section {
+        /* Reset the margin that was providing room for the side labels. */
+        margin-left: 0;
+      }
+    }
+  });
+}
+
+#auth_container #login_form {
+  .login-links {
+    margin-top: 2em;
+    text-align: center;
+
+    p {
+      width: @auth-field-width;
+
+      a {
+        color: blue;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+#auth_container #register_form {
+  .register-captcha-row {
+    padding-left: 0;
+
+    .register-captcha-container {
+      float: right;
+    }
+  }
+}
+
+
+/****************************************************************************
+ * Auto-complete widget
+ ****************************************************************************/
+
+.ui-autocomplete-results {
+  background: #ffffff;
+  border: 1px solid #808080;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  z-index: @z-index-menu;
+
+  .on-mobile-medium-screen-720({
+    &.search-results {
+      /*
+       * On mobile, set the autoresults list to take up the entire size of
+       * the #page-container, overriding anything set by the widget.
+       */
+      left: 0 !important;
+      top: -@page-container-padding !important;
+      width: 100% !important;
+      height: 100%;
+      border: 0;
+      overflow-y: auto;
+    }
+  });
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    .on-mobile-medium-screen-720({
+      max-height: none !important;
+    });
+
+    li {
+      cursor: pointer;
+      margin: 0;
+      padding: 3px 6px;
+      position: relative;
+      white-space: nowrap;
+
+      .on-mobile-medium-screen-720({
+        /*
+         * Give each item a border and more padding to help define the click
+         * area (and to fit in with typical search results on mobile devices.
+         */
+        border-top: 1px #EEE solid;
+        margin: 0 1em;
+        padding: 1.5em;
+      });
+
+      span {
+        margin-left: 6px;
+        position: absolute;
+        right: 6px;
+      }
+    }
+  }
+
+  .ui-autocomplete-over {
+    background: #71a5db;
+    color: #FFF;
+  }
+}
+
+.ui-autocomplete-footer {
+  background: #ECECEC;
+  border-top: 1px #C0C0C0 solid;
+  padding: 3px 6px;
+}
+
+
+/****************************************************************************
+ * User page hover
+ ****************************************************************************/
+
+#user_infobox {
+  .infobox-pic {
+    float: left;
+    width: 85px;
+    margin-right: 1em;
+  }
+
+  .infobox-text {
+    color: black;
+    float: left;
+    max-width: 200px;
+    word-wrap: break-word;
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  h2 {
+    a {
+      color: inherit;
+    }
+  }
+
+  .logged-in {
+    margin-top: 2em;
+  }
+
+  .logged-in, .joined {
+    font-size: 0.8em;
+  }
+
+  #infobox-text h2 {
+    margin-top: 0;
+    padding-top: 0;
+  }
+}
+
+#submitter {
+  position: relative;
+}
+
+
+/****************************************************************************
+ * Bug hover
+ ****************************************************************************/
+
+#bug_infobox {
+  max-width: 50em;
+  max-height: 25em;
+  overflow: hidden;
+
+  .bug-infobox-text {
+    color: black;
+    float: left;
+    word-wrap: break-word;
+
+    h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+  }
+}
+
+#user_infobox, #bug_infobox {
+  background: #F9F9F9;
+  border: 1px black solid;
+  display: block;
+  min-height: 12em;
+  padding: 1em;
+  position: absolute;
+  min-width: 40em;
+  z-index: @z-index-dialog;
+  .border-radius(10px);
+  .box-shadow(0px 0px 4px #000);
+
+  h2 {
+    font-size: 1.4em;
+    margin: 0 0 0.5em 0;
+    padding: 0;
+  }
+
+  p {
+    font-size: 1.2em;
+    margin: 0.5em 0;
+    padding: 0;
+  }
+}
+
+/****************************************************************************
+ * New Review Request
+ ****************************************************************************/
+#id_basedir
+#id_diff_path,
+#id_parent_diff_path {
+   width: 100%;
+}
+
+
+/****************************************************************************
+ * clearfix hacks
+ ****************************************************************************/
+
+/*
+ * clearfix hack. See http://www.webtoolkit.info/css-clearfix.html
+ */
+.clearfix {
+  display: inline-block;
+
+  &:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+  }
+}
+
+html[xmlns] .clearfix {
+  display: block;
+}
+
+* html .clearfix {
+  height: 1%;
+}
+
+// vim: set et ts=2 sw=2:
