@@ -398,3 +398,5 @@ TEST_PACKAGES = ['reviewboard']
 ABSOLUTE_URL_OVERRIDES = {
     'auth.user': lambda u: reverse('user', kwargs={'username': u.username})
 }
+
+RB_API_OAUTH = os.getenv('RB_API_OAUTH')

@@ -41,7 +41,7 @@ class SampleExtensionResource(WebAPIResource):
             },
         },
     )
-    def create(self, request, issue_id,  *args, **kwargs):
+    def create(self, request, issue_id, *args, **kwargs):
         if not self.has_access_permissions(request):
             return PERMISSION_DENIED
 
@@ -78,8 +78,13 @@ class AnytaskSyncExtension(Extension):
         values['body_top'] = reply.body_top.encode('utf-8')
         values['body_bottom'] = reply.body_bottom.encode('utf-8')
         values['author'] = reply.user.username
-        url = urlparse.urljoin(settings.ANYTASK_HOST, '/anyrb/update/') + str(review_id)
-        requests.post(url, data=values)
+
+        requests.post(
+            urlparse.urljoin(settings.ANYTASK_HOST, '/anyrb/update/') + str(review_id),
+            data=values,
+            headers={'OAUTH': settings.RB_API_OAUTH},
+            verify=False
+        )
 
     def on_published_review(self, *args, **kwargs):
         review = kwargs['review']
@@ -91,5 +96,10 @@ class AnytaskSyncExtension(Extension):
         for comment in review.get_all_comments():
             if comment.comment_type == 'diff':
                 values['diff-url'] = comment.get_absolute_url()
-        url = urlparse.urljoin(settings.ANYTASK_HOST, '/anyrb/update/') + str(review_id)
-        requests.post(url, data=values)
+
+        requests.post(
+            urlparse.urljoin(settings.ANYTASK_HOST, '/anyrb/update/') + str(review_id),
+            data=values,
+            headers={'OAUTH': settings.RB_API_OAUTH},
+            verify=False
+        )
